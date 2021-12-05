@@ -1,0 +1,15 @@
+.word {
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 5px auto;
+  width: 100%;
+}
+
+.delete {
+  color: #c4012e;
+  visibility: hidden;
+}
+
+.Word:hover .delete {
+  visibility: visible !important;
+}

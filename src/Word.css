@@ -13,3 +13,7 @@
 .Word:hover .delete {
   visibility: visible !important;
 }
+
+.delete:hover {
+  cursor: pointer;
+}

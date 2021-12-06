@@ -1,7 +1,16 @@
 import React from "react";
 import Word from "../Word";
+import AddWord from "../AddWord";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 
 export default function Vocabulary() {
+  function displayNewWordForm(event) {
+    event.preventDefault();
+    return <AddWord />;
+  }
+
   let vocabularyList = {
     doctor: "doctor",
     nurse: "parastar",
@@ -37,7 +46,16 @@ export default function Vocabulary() {
           </div>
         );
       })}
-      <div>Add new word</div>
+      <div>
+        {" "}
+        <a href="/" onClick={displayNewWordForm}>
+          {" "}
+          Add new word
+          <span className="px-1">
+            <FontAwesomeIcon icon={faPlusSquare} color="green" />
+          </span>
+        </a>
+      </div>
     </div>
   );
 }

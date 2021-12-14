@@ -17,12 +17,16 @@ export default function AddWord(props) {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    props.addNewWord({
-      wordInEnglish: newWordEnglish,
-      wordInFarsi: newWordFarsi,
-    });
-    setNewWordEnglish("");
-    setNewWordFarsi("");
+    if (newWordEnglish !== "" && newWordFarsi !== "") {
+      props.addNewWord({
+        wordInEnglish: newWordEnglish,
+        wordInFarsi: newWordFarsi,
+      });
+      setNewWordEnglish("");
+      setNewWordFarsi("");
+    } else {
+      alert("Please make sure input fields are not empty");
+    }
   }
 
   return (

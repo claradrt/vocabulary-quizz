@@ -1,60 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import Word from "../Word";
 import AddWord from "../AddWord";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
-
 export default function Vocabulary() {
-  function displayNewWordForm(event) {
-    event.preventDefault();
-    return <AddWord />;
+  const [vocabularyList, setVocabularyList] = useState(() => {
+    const savedVocabularyList = localStorage.getItem("storedVocabularyList");
+    const initialValue = JSON.parse(savedVocabularyList);
+    return initialValue || [];
+  });
+
+  function addNewWord(word) {
+    vocabularyList.push(word);
+    setVocabularyList([...vocabularyList]);
+    localStorage.setItem(
+      "storedVocabularyList",
+      JSON.stringify(vocabularyList)
+    );
   }
 
-  let vocabularyList = {
-    doctor: "doctor",
-    nurse: "parastar",
-    cook: "ashpaz",
-    policeman: "police",
-    lawyer: "vakil",
-    accountant: "hesab-dar",
-    teacher: "moalem",
-    good: "khub",
-    beautiful: "ziba",
-    kind: "mehraban",
-    smart: "bahush",
-    "hard worker": "por talash",
-    curious: "konj kav",
-    quiet: "kam harf",
-    talktative: "por harf",
-    polite: "moadab",
-    sensitive: "has sas",
-  };
+  function deleteWord(word) {
+    console.log("Word to delete", vocabularyList[word]);
+  }
+
   return (
     <div className="Vocabulary">
       <div className="row my-3">
-        <span className="col-2 text-center fw-bold">English</span>
-        <span className="col-2 text-center fw-bold">Farsi</span>
+        <span className="col-4 text-center fw-bold">English</span>
+        <span className="col-4 text-center fw-bold">Farsi</span>
       </div>
-      {Object.keys(vocabularyList).map((wordLanguage1, index) => {
-        return (
-          <div key={index}>
-            <Word
-              wordLanguage1={wordLanguage1}
-              wordLanguage2={vocabularyList[wordLanguage1]}
-            />
-          </div>
-        );
-      })}
+      {vocabularyList &&
+        vocabularyList.map((wordObject, index) => {
+          return (
+            <div key={index}>
+              <Word
+                wordLanguage1={wordObject.wordInEnglish}
+                wordLanguage2={wordObject.wordInFarsi}
+                wordIndex={index}
+                deleteWord={deleteWord}
+              />
+            </div>
+          );
+        })}
       <div>
         {" "}
-        <a href="/" onClick={displayNewWordForm}>
-          {" "}
-          Add new word
-          <span className="px-1">
-            <FontAwesomeIcon icon={faPlusSquare} color="green" />
-          </span>
-        </a>
+        <AddWord addNewWord={addNewWord} />
       </div>
     </div>
   );

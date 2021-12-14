@@ -8,6 +8,7 @@
 .delete {
   color: #c4012e;
   visibility: hidden;
+  width: fit-content;
 }
 
 .Word:hover .delete {
@@ -15,5 +16,9 @@
 }
 
 .delete:hover {
+  cursor: pointer;
+}
+
+.add-icon {
   cursor: pointer;
 }

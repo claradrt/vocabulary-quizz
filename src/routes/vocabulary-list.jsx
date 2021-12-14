@@ -18,8 +18,13 @@ export default function Vocabulary() {
     );
   }
 
-  function deleteWord(word) {
-    console.log("Word to delete", vocabularyList[word]);
+  function deleteWord(wordIndex) {
+    vocabularyList.splice(wordIndex, 1);
+    setVocabularyList([...vocabularyList]);
+    localStorage.setItem(
+      "storedVocabularyList",
+      JSON.stringify(vocabularyList)
+    );
   }
 
   return (

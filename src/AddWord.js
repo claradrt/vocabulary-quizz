@@ -21,29 +21,36 @@ export default function AddWord(props) {
       wordInEnglish: newWordEnglish,
       wordInFarsi: newWordFarsi,
     });
+    setNewWordEnglish("");
+    setNewWordFarsi("");
   }
 
   return (
-    <form className="row my-3" onSubmit={handleFormSubmit}>
-      <div className="col-4">
-        <input
-          type="text"
-          placeholder="Word in English..."
-          className="word text-center text-capitalize"
-          onChange={handleFirstInputChange}
-        />
-      </div>
-      <div className="col-4">
-        <input
-          type="text"
-          placeholder="Word in Farsi..."
-          className="word text-center text-capitalize"
-          onChange={handleSecondInputChange}
-        />
-      </div>
-      <button type="submit" className="col-4 align-self-center">
-        <FontAwesomeIcon icon={faPlus} color="green" className="add-icon" />
-      </button>
-    </form>
+    <div className="mt-4 AddWord">
+      <h4>Add new word</h4>
+      <form className="row my-3" onSubmit={handleFormSubmit}>
+        <div className="col-4">
+          <input
+            type="text"
+            placeholder="Word in English..."
+            className="word text-center text-capitalize"
+            onChange={handleFirstInputChange}
+            value={newWordEnglish}
+          />
+        </div>
+        <div className="col-4">
+          <input
+            type="text"
+            placeholder="Word in Farsi..."
+            className="word text-center text-capitalize"
+            onChange={handleSecondInputChange}
+            value={newWordFarsi}
+          />
+        </div>
+        <button type="submit" className="col-4 align-self-center">
+          <FontAwesomeIcon icon={faPlus} color="green" className="add-icon" />
+        </button>
+      </form>
+    </div>
   );
 }

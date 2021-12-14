@@ -4,54 +4,57 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function AddWord(props) {
-  const [newWordEnglish, setNewWordEnglish] = useState("");
-  const [newWordFarsi, setNewWordFarsi] = useState("");
+  const [newMeaning, setNewMeaning] = useState("");
+  const [newWord, setNewWord] = useState("");
 
-  function handleFirstInputChange(event) {
-    setNewWordEnglish(event.target.value);
+  function handleMeaningInputChange(event) {
+    setNewMeaning(event.target.value);
   }
 
-  function handleSecondInputChange(event) {
-    setNewWordFarsi(event.target.value);
+  function handleWordInputChange(event) {
+    setNewWord(event.target.value);
   }
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (newWordEnglish !== "" && newWordFarsi !== "") {
+    if (newMeaning !== "" && newWord !== "") {
       props.addNewWord({
-        wordInEnglish: newWordEnglish,
-        wordInFarsi: newWordFarsi,
+        meaning: newMeaning,
+        word: newWord,
       });
-      setNewWordEnglish("");
-      setNewWordFarsi("");
+      setNewMeaning("");
+      setNewWord("");
     } else {
       alert("Please make sure input fields are not empty");
     }
   }
 
   return (
-    <div className="mt-4 AddWord">
-      <h4>Add new word</h4>
-      <form className="row my-3" onSubmit={handleFormSubmit}>
-        <div className="col-4">
+    <div className="mt-4 AddWord mx-auto">
+      <form
+        className="row my-3 justify-content-center"
+        onSubmit={handleFormSubmit}
+      >
+        <h4 className="text-center">Add new word</h4>
+        <div className="col-5 text-end">
           <input
             type="text"
-            placeholder="Word in English..."
+            placeholder="Word..."
             className="word text-center text-capitalize"
-            onChange={handleFirstInputChange}
-            value={newWordEnglish}
+            onChange={handleWordInputChange}
+            value={newWord}
           />
         </div>
-        <div className="col-4">
+        <div className="col-5 text-start">
           <input
             type="text"
-            placeholder="Word in Farsi..."
+            placeholder="Meaning..."
             className="word text-center text-capitalize"
-            onChange={handleSecondInputChange}
-            value={newWordFarsi}
+            onChange={handleMeaningInputChange}
+            value={newMeaning}
           />
         </div>
-        <button type="submit" className="col-4 align-self-center">
+        <button type="submit" className="col-1 align-self-center">
           <FontAwesomeIcon icon={faPlus} color="green" className="add-icon" />
         </button>
       </form>

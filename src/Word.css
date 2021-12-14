@@ -1,17 +1,26 @@
-.word {
-  border: 1px solid black;
-  border-radius: 4px;
+.word-wrapper {
+  padding: 5px;
   margin: 5px auto;
-  width: 100%;
+  max-width: 600px;
+}
+
+.word {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.meaning {
+  opacity: 0.8;
 }
 
 .delete {
   color: #c4012e;
   visibility: hidden;
   width: fit-content;
+  text-align: right;
 }
 
-.Word:hover .delete {
+.word-wrapper:hover .delete {
   visibility: visible !important;
 }
 
@@ -23,8 +32,18 @@
   cursor: pointer;
 }
 
+.AddWord {
+  max-width: 600px;
+}
+
 .AddWord button {
   background-color: transparent;
   border: none;
   text-align: left;
+}
+
+@media (max-width: 600px) {
+  .delete {
+    visibility: visible;
+  }
 }

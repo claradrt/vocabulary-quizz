@@ -31,17 +31,16 @@ export default function Vocabulary() {
 
   return (
     <div className="Vocabulary">
-      <div className="row my-3">
-        <span className="col-4 text-center fw-bold">English</span>
-        <span className="col-4 text-center fw-bold">Farsi</span>
+      <div className="row my-3 justify-content-center">
+        <span className="col-1"></span>
       </div>
       {vocabularyList &&
         vocabularyList.map((wordObject, index) => {
           return (
             <div key={index}>
               <Word
-                wordLanguage1={wordObject.wordInEnglish}
-                wordLanguage2={wordObject.wordInFarsi}
+                meaning={wordObject.meaning}
+                word={wordObject.word}
                 wordIndex={index}
                 deleteWord={deleteWord}
               />

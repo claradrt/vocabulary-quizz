@@ -19,12 +19,14 @@ export default function Vocabulary() {
   }
 
   function deleteWord(wordIndex) {
-    vocabularyList.splice(wordIndex, 1);
-    setVocabularyList([...vocabularyList]);
-    localStorage.setItem(
-      "storedVocabularyList",
-      JSON.stringify(vocabularyList)
-    );
+    setTimeout(() => {
+      vocabularyList.splice(wordIndex, 1);
+      setVocabularyList([...vocabularyList]);
+      localStorage.setItem(
+        "storedVocabularyList",
+        JSON.stringify(vocabularyList)
+      );
+    }, 500);
   }
 
   return (

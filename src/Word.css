@@ -10,7 +10,7 @@
 }
 
 .meaning {
-  opacity: 0.8;
+  color: #c04848;
 }
 
 .delete {
@@ -40,6 +40,19 @@
   background-color: transparent;
   border: none;
   text-align: left;
+}
+
+.delete-icon {
+  border-radius: 50%;
+  width: fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  padding: 2px 6px;
+}
+
+.delete-icon:hover {
+  background-color: #f8f9fa;
+  color: white;
 }
 
 @media (max-width: 600px) {

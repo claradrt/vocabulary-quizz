@@ -16,11 +16,13 @@ export default function Word(props) {
           <div className="meaning text-capitalize">{props.meaning}</div>
         </div>
         <div className="delete col-6 align-self-center px-5">
-          <FontAwesomeIcon
-            icon={faTrashAlt}
-            color="red"
-            onClick={handleWordDelete}
-          />
+          <div className="delete-icon">
+            <FontAwesomeIcon
+              icon={faTrashAlt}
+              color="red"
+              onClick={handleWordDelete}
+            />
+          </div>
         </div>
       </div>
     </div>

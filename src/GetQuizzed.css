@@ -1,0 +1,45 @@
+.get-quizzed-btn {
+  background-image: linear-gradient(
+    to right,
+    #c04848 0%,
+    #480048 51%,
+    #c04848 100%
+  );
+  margin: 10px auto;
+  padding: 15px 45px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  font-size: 20px;
+  border: 1px solid black;
+}
+.get-quizzed-btn:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+/*
+         .btn-grad {background-image: linear-gradient(to right, #C04848 0%, #480048  51%, #C04848  100%)}
+         .btn-grad {
+            margin: 10px;
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+          }
+
+          .btn-grad:hover {
+            background-position: right center;
+            color: #fff;
+            text-decoration: none;
+          }
+         */

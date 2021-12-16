@@ -1,3 +1,10 @@
+import React from "react";
+import GetQuizzed from "../GetQuizzed.js";
+
 export default function Quiz() {
-  return "Hello from Quiz route";
+  return (
+    <div className="Quiz mt-5">
+      <GetQuizzed />
+    </div>
+  );
 }

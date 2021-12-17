@@ -1,0 +1,11 @@
+.answer-reveal {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.next-word-btn {
+  border: 1px solid black;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+}

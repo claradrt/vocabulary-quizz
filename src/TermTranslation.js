@@ -12,7 +12,10 @@ export default function TermTranslation(props) {
         </div>
         <div>
           <h2>Meaning</h2>
-          <AnswerForm answer={props.answer} />
+          <AnswerForm
+            answer={props.answer}
+            newWordToTranslate={props.newWordToTranslate}
+          />
         </div>
         <div className="d-none">Answer: {props.answer}</div>
       </div>
@@ -22,7 +25,10 @@ export default function TermTranslation(props) {
       <div className="TermTranslation d-inline-flex justify-content-evenly">
         <div>
           <h2>Word</h2>
-          <AnswerForm answer={props.answer} />
+          <AnswerForm
+            answer={props.answer}
+            newWordToTranslate={props.newWordToTranslate}
+          />
         </div>
         <div>
           <h2>Meaning</h2>

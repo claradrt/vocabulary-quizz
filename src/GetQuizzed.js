@@ -57,6 +57,7 @@ export default function GetQuizzed() {
           word={wordToTranslate}
           meaning={meaningToTranslate}
           answer={answer}
+          newWordToTranslate={newWordToTranslate}
         />
       )}
     </div>

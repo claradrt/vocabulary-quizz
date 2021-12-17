@@ -17,6 +17,7 @@ export default function AnswerForm(props) {
       alert("Answer incorrect");
     }
     props.newWordToTranslate();
+    event.target[0].value = 0;
   }
 
   function nextWord() {

@@ -1,5 +1,6 @@
 import React from "react";
 import "./TermTranslation.css";
+import AnswerForm from "./AnswerForm";
 
 export default function TermTranslation(props) {
   if (props.meaning === "") {
@@ -11,7 +12,7 @@ export default function TermTranslation(props) {
         </div>
         <div>
           <h2>Meaning</h2>
-          <input type="text" placeholder="type answer..." />
+          <AnswerForm answer={props.answer} />
         </div>
         <div className="d-none">Answer: {props.answer}</div>
       </div>
@@ -21,7 +22,7 @@ export default function TermTranslation(props) {
       <div className="TermTranslation d-inline-flex justify-content-evenly">
         <div>
           <h2>Word</h2>
-          <input type="text" placeholder="type answer..." />
+          <AnswerForm answer={props.answer} />
         </div>
         <div>
           <h2>Meaning</h2>

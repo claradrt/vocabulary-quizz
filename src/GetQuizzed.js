@@ -17,6 +17,14 @@ export default function GetQuizzed() {
   function startGame() {
     setShowButton(false);
     if (vocabularyList.length !== 0) {
+      newWordToTranslate();
+    } else {
+      alert("Please add words in your vocabulary list");
+    }
+  }
+
+  function newWordToTranslate() {
+    if (vocabularyList.length !== 0) {
       const attributes = ["word", "meaning"];
       let randomAttributeIndex = Math.floor(Math.random() * 2);
       let randomTermIndex = Math.floor(Math.random() * vocabularyList.length);
@@ -30,7 +38,7 @@ export default function GetQuizzed() {
         setAnswer(vocabularyList[randomTermIndex].word);
       }
     } else {
-      alert("Please add words in your vocabulary list");
+      alert("There are no more words to guess");
     }
   }
 

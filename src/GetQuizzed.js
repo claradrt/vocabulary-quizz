@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./GetQuizzed.css";
+import TermTranslation from "./TermTranslation.js";
 
 export default function GetQuizzed() {
   const [vocabularyList, setVocabularyList] = useState(() => {
@@ -8,22 +9,48 @@ export default function GetQuizzed() {
     return initialValue || [];
   });
 
+  const [showButton, setShowButton] = useState(true);
+  const [wordToTranslate, setWordToTranslate] = useState("");
+  const [meaningToTranslate, setMeaningToTranslate] = useState("");
+  const [answer, setAnswer] = useState("");
+
   function startGame() {
+    setShowButton(false);
     if (vocabularyList.length !== 0) {
-      alert("let's get it started");
+      const attributes = ["word", "meaning"];
+      let randomAttributeIndex = Math.floor(Math.random() * 2);
+      let randomTermIndex = Math.floor(Math.random() * vocabularyList.length);
+      if (attributes[randomAttributeIndex] === "word") {
+        setMeaningToTranslate("");
+        setWordToTranslate(vocabularyList[randomTermIndex].word);
+        setAnswer(vocabularyList[randomTermIndex].meaning);
+      } else {
+        setWordToTranslate("");
+        setMeaningToTranslate(vocabularyList[randomTermIndex].meaning);
+        setAnswer(vocabularyList[randomTermIndex].word);
+      }
     } else {
       alert("Please add words in your vocabulary list");
     }
   }
 
   return (
-    <div>
+    <div className="text-center">
       <div className="instructions text-center mb-5">
         Click on the button below to get tested on your vocabulary list!
       </div>
-      <button className="get-quizzed-btn rounded" onClick={startGame}>
-        Get quizzed!
-      </button>
+      {showButton && (
+        <button className="get-quizzed-btn rounded" onClick={startGame}>
+          Get quizzed!
+        </button>
+      )}
+      {(wordToTranslate || meaningToTranslate) && (
+        <TermTranslation
+          word={wordToTranslate}
+          meaning={meaningToTranslate}
+          answer={answer}
+        />
+      )}
     </div>
   );
 }

@@ -1,3 +1,7 @@
+.AnswerForm {
+  margin: 10px;
+}
+
 .answer-reveal {
   cursor: pointer;
   text-decoration: underline;
@@ -8,4 +12,13 @@
   border-radius: 4px;
   margin-top: 10px;
   cursor: pointer;
+}
+
+.answer {
+  font-size: 22px;
+  margin: 20px;
+}
+
+.check-icon {
+  padding-left: 10px;
 }

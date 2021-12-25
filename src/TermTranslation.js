@@ -8,16 +8,16 @@ export default function TermTranslation(props) {
       <div className="TermTranslation d-inline-flex justify-content-evenly">
         <div>
           <h2>Word</h2>
-          {props.word}
+          <span className="wordToTranlate">{props.word}</span>
         </div>
         <div>
           <h2>Meaning</h2>
           <AnswerForm
             answer={props.answer}
             newWordToTranslate={props.newWordToTranslate}
+            addPointToScore={props.addPointToScore}
           />
         </div>
-        <div className="d-none">Answer: {props.answer}</div>
       </div>
     );
   } else {
@@ -28,13 +28,13 @@ export default function TermTranslation(props) {
           <AnswerForm
             answer={props.answer}
             newWordToTranslate={props.newWordToTranslate}
+            addPointToScore={props.addPointToScore}
           />
         </div>
         <div>
           <h2>Meaning</h2>
-          {props.meaning}
+          <span className="wordToTranlate">{props.meaning}</span>
         </div>
-        <div className="d-none">Answer: {props.answer}</div>
       </div>
     );
   }

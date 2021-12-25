@@ -22,7 +22,7 @@ export default function Quiz() {
     setTotal(total);
   }
 
-  function initializeGame() {
+  function gameIsFinished() {
     setShowButton(true);
   }
 
@@ -40,7 +40,7 @@ export default function Quiz() {
       <div className="text-center mt-5">
         {showButton && <QuizButton startGame={startGame} />}
         {showButton || (
-          <StartQuiz initializeGame={initializeGame} total={total} />
+          <StartQuiz gameIsFinished={gameIsFinished} total={total} />
         )}
       </div>
     );

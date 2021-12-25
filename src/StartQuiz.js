@@ -39,7 +39,7 @@ export default function StartQuizz(props) {
       setVocabularyList(vocabularyList);
     } else {
       alert("There are no more words to guess");
-      props.initializeGame();
+      props.gameIsFinished();
     }
   }, [props, vocabularyList]);
 

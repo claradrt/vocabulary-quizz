@@ -14,9 +14,7 @@ export default function StartQuizz(props) {
   const [meaningToTranslate, setMeaningToTranslate] = useState("");
   const [answer, setAnswer] = useState("");
   const [numberOfRightAnswers, setNumberOfRightAnswers] = useState(0);
-  const initializeGame = () => {
-    props.initializeGame();
-  };
+  const [isInitialized, setIsInitialized] = useState(false);
 
   function addPointToScore() {
     setNumberOfRightAnswers(numberOfRightAnswers + 1);
@@ -41,16 +39,18 @@ export default function StartQuizz(props) {
       setVocabularyList(vocabularyList);
     } else {
       alert("There are no more words to guess");
-      initializeGame();
+      props.initializeGame();
     }
-    console.log("Word to translate from Quiz route:", wordToTranslate);
-    console.log("Meaning to translate from Quiz route:", meaningToTranslate);
-  }, []);
+  }, [props, vocabularyList]);
 
   useEffect(() => {
+    if (isInitialized) {
+      return;
+    }
     newWordToTranslate();
     console.log("UseEffect triggered!");
-  }, [newWordToTranslate]);
+    setIsInitialized(true);
+  }, [newWordToTranslate, isInitialized]);
 
   return (
     <div>

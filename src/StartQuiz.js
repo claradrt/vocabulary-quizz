@@ -10,9 +10,7 @@ export default function StartQuizz(props) {
     const initialValue = JSON.parse(savedVocabularyList);
     return initialValue || [];
   });
-  const [wordToTranslate, setWordToTranslate] = useState("");
-  const [meaningToTranslate, setMeaningToTranslate] = useState("");
-  const [answer, setAnswer] = useState("");
+  const [question, setQuestion] = useState({});
   const [numberOfRightAnswers, setNumberOfRightAnswers] = useState(0);
   const [isInitialized, setIsInitialized] = useState(false);
 
@@ -25,15 +23,21 @@ export default function StartQuizz(props) {
       const attributes = ["word", "meaning"];
       let randomAttributeIndex = Math.floor(Math.random() * 2);
       let randomTermIndex = Math.floor(Math.random() * vocabularyList.length);
+      let questionObject;
       if (attributes[randomAttributeIndex] === "word") {
-        setMeaningToTranslate("");
-        setWordToTranslate(vocabularyList[randomTermIndex].word);
-        setAnswer(vocabularyList[randomTermIndex].meaning);
+        questionObject = {
+          wordToTranslate: vocabularyList[randomTermIndex].word,
+          meaningToTranslate: "",
+          answer: vocabularyList[randomTermIndex].meaning,
+        };
       } else {
-        setWordToTranslate("");
-        setMeaningToTranslate(vocabularyList[randomTermIndex].meaning);
-        setAnswer(vocabularyList[randomTermIndex].word);
+        questionObject = {
+          wordToTranslate: "",
+          meaningToTranslate: vocabularyList[randomTermIndex].meaning,
+          answer: vocabularyList[randomTermIndex].word,
+        };
       }
+      setQuestion(questionObject);
       vocabularyList.splice(randomTermIndex, 1);
       console.log(vocabularyList);
       setVocabularyList(vocabularyList);
@@ -54,11 +58,11 @@ export default function StartQuizz(props) {
   return (
     <div>
       <Score total={props.total} score={numberOfRightAnswers} />
-      {(wordToTranslate || meaningToTranslate) && (
+      {(question.wordToTranslate || question.meaningToTranslate) && (
         <TermTranslation
-          word={wordToTranslate}
-          meaning={meaningToTranslate}
-          answer={answer}
+          word={question.wordToTranslate}
+          meaning={question.meaningToTranslate}
+          answer={question.answer}
           newWordToTranslate={newWordToTranslate}
           addPointToScore={addPointToScore}
         />

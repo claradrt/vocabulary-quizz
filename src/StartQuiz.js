@@ -48,7 +48,6 @@ export default function StartQuizz(props) {
       return;
     }
     newWordToTranslate();
-    console.log("UseEffect triggered!");
     setIsInitialized(true);
   }, [newWordToTranslate, isInitialized]);
 

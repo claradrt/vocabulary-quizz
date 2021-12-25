@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./AnswerForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
@@ -6,10 +6,6 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 export default function AnswerForm(props) {
   const [showAnswer, setShowAnswer] = useState(false);
   const [answerCorrect, setAnswerCorrect] = useState(false);
-
-  useEffect(() => {
-    console.log("AnswerForm component mounted");
-  }, []);
 
   function displayAnswer() {
     setShowAnswer(true);

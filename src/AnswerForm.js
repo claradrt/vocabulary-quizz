@@ -10,12 +10,14 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 export default function AnswerForm(props) {
   const [showAnswer, setShowAnswer] = useState(false);
   const [answerStatus, setAnswerStatus] = useState("no-answer");
+  const [disabled, setDisabled] = useState(false);
 
   function displayAnswer() {
     setShowAnswer(true);
   }
 
   function handleSubmit(event) {
+    setDisabled(true);
     event.preventDefault();
     let input = event.target[0].value;
     input = input.toLowerCase();
@@ -24,6 +26,7 @@ export default function AnswerForm(props) {
       props.addPointToScore();
       setTimeout(() => {
         setAnswerStatus("no-answer");
+        setDisabled(false);
         props.newWordToTranslate();
         event.target[0].value = "";
       }, 1000);
@@ -31,6 +34,7 @@ export default function AnswerForm(props) {
       setAnswerStatus("incorrect-answer");
       setTimeout(() => {
         setAnswerStatus("no-answer");
+        setDisabled(false);
         setShowAnswer(true);
       }, 2000);
     }
@@ -40,7 +44,7 @@ export default function AnswerForm(props) {
     props.newWordToTranslate();
     setShowAnswer(false);
   }
-  const answerComponents = {
+  const answerStatusRendering = {
     "no-answer": <button type="submit">Submit</button>,
     "correct-answer": (
       <span className="check-icon">
@@ -58,8 +62,12 @@ export default function AnswerForm(props) {
     <form className="AnswerForm" onSubmit={handleSubmit}>
       {showAnswer || (
         <div>
-          <input type="text" placeholder="type answer..." />
-          {answerComponents[answerStatus]}
+          <input
+            type="text"
+            placeholder="type answer..."
+            disabled={disabled ? "disabled" : ""}
+          />
+          {answerStatusRendering[answerStatus]}
           <div className="answer-reveal" onClick={displayAnswer}>
             See answer
           </div>

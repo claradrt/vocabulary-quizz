@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+
+import ShowAnswer from "./ShowAnswer";
+
 import "./AnswerForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
@@ -6,8 +9,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default function AnswerForm(props) {
   const [showAnswer, setShowAnswer] = useState(false);
-  const [answerCorrect, setAnswerCorrect] = useState(false);
-  const [answerIncorrect, setAnswerIncorrect] = useState(false);
+  const [answerStatus, setAnswerStatus] = useState("no-answer");
 
   function displayAnswer() {
     setShowAnswer(true);
@@ -18,17 +20,17 @@ export default function AnswerForm(props) {
     let input = event.target[0].value;
     input = input.toLowerCase();
     if (input === props.answer.toLowerCase()) {
-      setAnswerCorrect(true);
+      setAnswerStatus("correct-answer");
       props.addPointToScore();
       setTimeout(() => {
-        setAnswerCorrect(false);
+        setAnswerStatus("no-answer");
         props.newWordToTranslate();
         event.target[0].value = "";
       }, 1000);
     } else {
-      setAnswerIncorrect(true);
+      setAnswerStatus("incorrect-answer");
       setTimeout(() => {
-        setAnswerIncorrect(false);
+        setAnswerStatus("no-answer");
         setShowAnswer(true);
       }, 2000);
     }
@@ -38,36 +40,32 @@ export default function AnswerForm(props) {
     props.newWordToTranslate();
     setShowAnswer(false);
   }
+  const answerComponents = {
+    "no-answer": <button type="submit">Submit</button>,
+    "correct-answer": (
+      <span className="check-icon">
+        <FontAwesomeIcon icon={faCheck} color="green" />
+      </span>
+    ),
+    "incorrect-answer": (
+      <span className="check-icon">
+        <FontAwesomeIcon icon={faTimes} color="red" />
+      </span>
+    ),
+  };
 
   return (
     <form className="AnswerForm" onSubmit={handleSubmit}>
       {showAnswer || (
         <div>
           <input type="text" placeholder="type answer..." />
-          {answerCorrect || answerIncorrect || (
-            <button type="submit">Submit</button>
-          )}
-          {answerCorrect && (
-            <span className="check-icon">
-              <FontAwesomeIcon icon={faCheck} color="green" />
-            </span>
-          )}
-          {answerIncorrect && (
-            <span className="check-icon">
-              <FontAwesomeIcon icon={faTimes} color="red" />
-            </span>
-          )}
+          {answerComponents[answerStatus]}
           <div className="answer-reveal" onClick={displayAnswer}>
             See answer
           </div>
         </div>
       )}
-      {showAnswer && <span className="answer">{props.answer}</span>}
-      {showAnswer && (
-        <div className="next-word-btn" onClick={nextWord}>
-          Next word
-        </div>
-      )}
+      {showAnswer && <ShowAnswer answer={props.answer} nextWord={nextWord} />}
     </form>
   );
 }

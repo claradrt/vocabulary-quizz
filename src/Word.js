@@ -19,7 +19,7 @@ export default function Word(props) {
           <div className="delete-icon">
             <FontAwesomeIcon
               icon={faTrashAlt}
-              color="red"
+              color="#c04848"
               onClick={handleWordDelete}
             />
           </div>

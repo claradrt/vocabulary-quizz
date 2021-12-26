@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "./AnswerForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default function AnswerForm(props) {
   const [showAnswer, setShowAnswer] = useState(false);
   const [answerCorrect, setAnswerCorrect] = useState(false);
+  const [answerIncorrect, setAnswerIncorrect] = useState(false);
 
   function displayAnswer() {
     setShowAnswer(true);
@@ -24,7 +26,11 @@ export default function AnswerForm(props) {
         event.target[0].value = "";
       }, 1000);
     } else {
-      alert("Answer incorrect");
+      setAnswerIncorrect(true);
+      setTimeout(() => {
+        setAnswerIncorrect(false);
+        setShowAnswer(true);
+      }, 2000);
     }
   }
 
@@ -38,10 +44,17 @@ export default function AnswerForm(props) {
       {showAnswer || (
         <div>
           <input type="text" placeholder="type answer..." />
-          {answerCorrect || <button type="submit">Submit</button>}
+          {answerCorrect || answerIncorrect || (
+            <button type="submit">Submit</button>
+          )}
           {answerCorrect && (
             <span className="check-icon">
               <FontAwesomeIcon icon={faCheck} color="green" />
+            </span>
+          )}
+          {answerIncorrect && (
+            <span className="check-icon">
+              <FontAwesomeIcon icon={faTimes} color="red" />
             </span>
           )}
           <div className="answer-reveal" onClick={displayAnswer}>

@@ -4,6 +4,7 @@ import StartQuiz from "../StartQuiz.js";
 
 import "../Quiz.css";
 import QuizButton from "../QuizButton.js";
+import { NavLink } from "react-router-dom";
 
 export default function Quiz() {
   const [showButton, setShowButton] = useState(true);
@@ -28,11 +29,17 @@ export default function Quiz() {
 
   if (total === 0) {
     return (
-      <div className="text-center mt-5">
-        <div className="instructions text-center mb-5">
-          You don't have any words in your vocabulary list for us to quiz you...
-          To add some, go to the Vocabulary List section.
+      <div className="instructions text-center mt-5">
+        <h2>Welcome to your own vocabulary quiz application!</h2>
+        <div className="mb-5">
+          <br />
+          This application was conceived for people who are studying a new
+          language and are trying to learn some vocabulary. <br /> <br />
+          Create your own vocabulary list by clicking on the button below and
+          come back to this section to get tested on your knowledge!
         </div>
+
+        <NavLink to="/vocabulary">Add words to my vocabulary list</NavLink>
       </div>
     );
   } else {

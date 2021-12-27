@@ -58,15 +58,13 @@ export default function StartQuizz(props) {
   return (
     <div>
       <Score total={props.total} score={numberOfRightAnswers} />
-      {(question.wordToTranslate || question.meaningToTranslate) && (
-        <TermTranslation
-          word={question.wordToTranslate}
-          meaning={question.meaningToTranslate}
-          answer={question.answer}
-          newWordToTranslate={newWordToTranslate}
-          addPointToScore={addPointToScore}
-        />
-      )}
+      <TermTranslation
+        word={question.wordToTranslate}
+        meaning={question.meaningToTranslate}
+        answer={question.answer}
+        newWordToTranslate={newWordToTranslate}
+        addPointToScore={addPointToScore}
+      />
     </div>
   );
 }

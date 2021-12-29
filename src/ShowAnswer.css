@@ -1,0 +1,17 @@
+.answer {
+  font-size: 22px;
+  margin: 20px;
+}
+
+.next-word-btn {
+  border: 1px solid black;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .answer {
+    font-size: 20px;
+  }
+}

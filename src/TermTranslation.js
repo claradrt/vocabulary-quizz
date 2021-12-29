@@ -5,10 +5,10 @@ import AnswerForm from "./AnswerForm";
 export default function TermTranslation(props) {
   if (props.meaning === "") {
     return (
-      <div className="TermTranslation d-inline-flex justify-content-evenly">
+      <div className="TermTranslation d-inline-flex">
         <div>
           <h2>Word</h2>
-          <span className="wordToTranslate">{props.word}</span>
+          <div className="wordToTranslate">{props.word}</div>
         </div>
         <div>
           <h2>Meaning</h2>
@@ -22,7 +22,7 @@ export default function TermTranslation(props) {
     );
   } else {
     return (
-      <div className="TermTranslation d-inline-flex justify-content-evenly">
+      <div className="TermTranslation d-inline-flex">
         <div>
           <h2>Word</h2>
           <AnswerForm
@@ -33,7 +33,7 @@ export default function TermTranslation(props) {
         </div>
         <div>
           <h2>Meaning</h2>
-          <span className="wordToTranslate">{props.meaning}</span>
+          <div className="wordToTranslate">{props.meaning}</div>
         </div>
       </div>
     );

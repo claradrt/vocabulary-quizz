@@ -1,7 +1,13 @@
-.word-wrapper {
+.word-wrapper,
+.add-word-wrapper {
   padding: 5px;
   margin: 5px auto;
   max-width: 600px;
+}
+
+.add-word-wrapper:hover {
+  cursor: pointer;
+  background-color: #f8f9fa;
 }
 
 .word {
@@ -13,22 +19,18 @@
   color: #c04848;
 }
 
-.delete {
+.delete-wrapper {
   color: #c04848;
   visibility: hidden;
   width: fit-content;
   text-align: right;
 }
 
-.word-wrapper:hover .delete {
+.word-wrapper:hover .delete-wrapper {
   visibility: visible !important;
 }
 
-.delete:hover {
-  cursor: pointer;
-}
-
-.add-icon {
+.delete-wrapper:hover {
   cursor: pointer;
 }
 
@@ -46,8 +48,8 @@
   border-radius: 50%;
   width: fit-content;
   height: fit-content;
-  margin: 0 auto;
   padding: 2px 6px;
+  float: right;
 }
 
 .delete-icon:hover {
@@ -56,7 +58,8 @@
 }
 
 @media (max-width: 600px) {
-  .delete {
+  .delete-wrapper {
     visibility: visible;
+    font-size: 15px;
   }
 }

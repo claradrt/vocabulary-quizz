@@ -61,7 +61,11 @@ export default function AnswerForm(props) {
     setShowAnswer(false);
   }
   const answerStatusRendering = {
-    "no-answer": <button type="submit">Submit</button>,
+    "no-answer": (
+      <button className="submit-btn" type="submit">
+        Submit
+      </button>
+    ),
     "correct-answer": (
       <span className="check-icon">
         <FontAwesomeIcon icon={faCheck} color="green" />
@@ -79,6 +83,7 @@ export default function AnswerForm(props) {
       {showAnswer || (
         <div>
           <input
+            className="answer-input"
             type="text"
             placeholder="type answer..."
             disabled={disabled ? "disabled" : ""}

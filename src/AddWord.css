@@ -1,0 +1,23 @@
+.AddWord button {
+  text-align: left;
+}
+
+.AddWord input {
+  border: 1px solid #757575;
+}
+
+.add-icon {
+  font-size: 15px;
+  font-weight: lighter;
+  margin: auto 5px;
+}
+
+@media (max-width: 400px) {
+  .AddWord input {
+    width: 150px;
+  }
+
+  .AddWord button {
+    margin-top: 10px;
+  }
+}

@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./QuizButton.css";
+
 export default function QuizButton(props) {
   return (
     <div className="QuizButton">

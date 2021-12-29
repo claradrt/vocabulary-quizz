@@ -2,23 +2,32 @@
   margin: 10px;
 }
 
+.answer-input:focus-visible {
+  outline-color: rgb(229, 151, 0);
+}
+
 .answer-reveal {
   cursor: pointer;
   text-decoration: underline;
 }
 
-.next-word-btn {
-  border: 1px solid black;
-  border-radius: 4px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.answer {
-  font-size: 22px;
-  margin: 20px;
-}
-
 .check-icon {
   padding-left: 10px;
+}
+
+.submit-btn {
+  margin: 2px;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+
+@media (max-width: 600px) {
+  .answer-input {
+    width: 100px;
+  }
+
+  .submit-btn {
+    padding: 2px 4px;
+    font-size: 12px;
+  }
 }

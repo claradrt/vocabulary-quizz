@@ -15,7 +15,7 @@ export default function Word(props) {
           <div className="word text-capitalize">{props.word}</div>
           <div className="meaning text-capitalize">{props.meaning}</div>
         </div>
-        <div className="delete col-6 align-self-center px-5">
+        <div className="delete-wrapper col-6 align-self-center pe-3">
           <div className="delete-icon">
             <FontAwesomeIcon
               icon={faTrashAlt}

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./Word.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
+import "./AddWord.css";
 
 export default function AddWord(props) {
   const [newMeaning, setNewMeaning] = useState("");
@@ -35,28 +36,30 @@ export default function AddWord(props) {
         className="row my-3 justify-content-center"
         onSubmit={handleFormSubmit}
       >
-        <h4 className="text-center">Add new word</h4>
-        <div className="col-5 text-end">
+        <div className="col-6 col-md-5 text-end">
           <input
             type="text"
             placeholder="Word..."
-            className="word text-center text-capitalize"
+            className="text-center text-capitalize"
             onChange={handleWordInputChange}
             value={newWord}
+            autoFocus
           />
         </div>
-        <div className="col-5 text-start">
+        <div className="col-6 col-md-5 text-start">
           <input
             type="text"
             placeholder="Meaning..."
-            className="word text-center text-capitalize"
+            className="text-center text-capitalize"
             onChange={handleMeaningInputChange}
             value={newMeaning}
           />
+          <div className="text-center d-inline-block">
+            <button type="submit" className="align-self-center add-icon">
+              <FontAwesomeIcon icon={faPlus} color="#757575" />
+            </button>
+          </div>
         </div>
-        <button type="submit" className="col-1 align-self-center">
-          <FontAwesomeIcon icon={faPlus} color="green" className="add-icon" />
-        </button>
       </form>
     </div>
   );

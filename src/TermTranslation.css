@@ -1,9 +1,27 @@
 .TermTranslation {
-  width: 60%;
+  max-width: 600px;
   margin: 0 auto;
+}
+
+.TermTranslation div {
+  margin: 20px;
 }
 
 .wordToTranslate {
   font-size: 22px;
-  margin: 20px;
+  margin: 10px;
+}
+
+@media (max-width: 600px) {
+  .TermTranslation {
+    font-size: 15px;
+  }
+
+  .TermTranslation div {
+    margin: 10px;
+  }
+
+  .wordToTranslate {
+    font-size: 20px;
+  }
 }

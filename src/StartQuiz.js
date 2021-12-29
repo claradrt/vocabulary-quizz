@@ -2,8 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import TermTranslation from "./TermTranslation.js";
 import Score from "./Score.js";
 
-import "./Quiz.css";
-
 export default function StartQuizz(props) {
   const [vocabularyList, setVocabularyList] = useState(() => {
     const savedVocabularyList = localStorage.getItem("storedVocabularyList");

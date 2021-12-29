@@ -9,6 +9,8 @@ export default function Vocabulary() {
     return initialValue || [];
   });
 
+  const [addWord, setAddWord] = useState(false);
+
   function addNewWord(word) {
     vocabularyList.push(word);
     setVocabularyList([...vocabularyList]);
@@ -29,11 +31,25 @@ export default function Vocabulary() {
     }, 500);
   }
 
+  function handleClick() {
+    setAddWord(true);
+  }
+
   return (
     <div className="Vocabulary">
-      <div className="row my-3 justify-content-center">
-        <span className="col-1"></span>
-      </div>
+      {addWord && (
+        <div>
+          <AddWord addNewWord={addNewWord} />
+        </div>
+      )}
+      {addWord || (
+        <div
+          className="border text-center mt-3 add-word-wrapper"
+          onClick={handleClick}
+        >
+          +Add new word
+        </div>
+      )}
       {vocabularyList &&
         vocabularyList.map((wordObject, index) => {
           return (
@@ -47,10 +63,6 @@ export default function Vocabulary() {
             </div>
           );
         })}
-      <div>
-        {" "}
-        <AddWord addNewWord={addNewWord} />
-      </div>
     </div>
   );
 }

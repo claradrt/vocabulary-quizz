@@ -8,7 +8,7 @@ export default function TermTranslation(props) {
       <div className="TermTranslation d-inline-flex justify-content-evenly">
         <div>
           <h2>Word</h2>
-          <span className="wordToTranlate">{props.word}</span>
+          <span className="wordToTranslate">{props.word}</span>
         </div>
         <div>
           <h2>Meaning</h2>
@@ -33,7 +33,7 @@ export default function TermTranslation(props) {
         </div>
         <div>
           <h2>Meaning</h2>
-          <span className="wordToTranlate">{props.meaning}</span>
+          <span className="wordToTranslate">{props.meaning}</span>
         </div>
       </div>
     );

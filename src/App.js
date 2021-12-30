@@ -1,5 +1,5 @@
 import "./App.css";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Quiz from "./routes/quiz";
 import Vocabulary from "./routes/vocabulary-list";
@@ -12,6 +12,7 @@ export default function App() {
       <HashRouter>
         <Routes>
           <Route path="/home" element={<Quiz />} />
+          <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path="/vocabulary" element={<Vocabulary />} />
         </Routes>
       </HashRouter>

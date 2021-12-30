@@ -1,23 +1,56 @@
 .AddWord button {
   text-align: left;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 15px;
+  margin: auto 5px;
+}
+
+.AddWord button:hover {
+  background-color: #f8f9fa;
+}
+
+.add-btn-wrapper {
+  display: inline-block;
 }
 
 .AddWord input {
   border: 1px solid #757575;
+  border-radius: 4px;
 }
 
-.add-icon {
-  font-size: 15px;
-  font-weight: lighter;
-  margin: auto 5px;
+.AddWord .word-input {
+  text-align: right;
+}
+
+.AddWord .meaning-input {
+  text-align: left;
+}
+
+.AddWord input:focus-visible {
+  outline-color: rgb(229, 151, 0);
 }
 
 @media (max-width: 400px) {
+  .AddWord .word-input {
+    text-align: center;
+  }
+
   .AddWord input {
-    width: 150px;
+    width: 100%;
   }
 
   .AddWord button {
-    margin-top: 10px;
+    background-color: #f8f9fa;
+    display: block;
+    font-size: 12px;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+  }
+
+  .add-btn-wrapper {
+    display: block;
+    margin-top: 5px;
   }
 }

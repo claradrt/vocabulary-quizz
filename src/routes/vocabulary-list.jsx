@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Word from "../Word";
 import AddWord from "../AddWord";
+import "../VocabularyList.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function Vocabulary() {
   const [vocabularyList, setVocabularyList] = useState(() => {
@@ -8,6 +11,8 @@ export default function Vocabulary() {
     const initialValue = JSON.parse(savedVocabularyList);
     return initialValue || [];
   });
+  const [selectedWordsIndex, setSelectedWordsIndex] = useState([]);
+  const [showDeleteOption, setShowDeleteOption] = useState(false);
 
   const [addWord, setAddWord] = useState(false);
 
@@ -20,19 +25,40 @@ export default function Vocabulary() {
     );
   }
 
-  function deleteWord(wordIndex) {
+  function deleteSelection() {
     setTimeout(() => {
-      vocabularyList.splice(wordIndex, 1);
-      setVocabularyList([...vocabularyList]);
-      localStorage.setItem(
-        "storedVocabularyList",
-        JSON.stringify(vocabularyList)
-      );
+      for (var wordIndex of selectedWordsIndex) {
+        vocabularyList.splice(wordIndex, 1);
+        setVocabularyList([...vocabularyList]);
+        localStorage.setItem(
+          "storedVocabularyList",
+          JSON.stringify(vocabularyList)
+        );
+      }
+      setSelectedWordsIndex([]);
+      setShowDeleteOption(false);
     }, 500);
   }
 
   function handleClick() {
     setAddWord(true);
+  }
+
+  function wordIsSelected(wordIndex) {
+    selectedWordsIndex.push(wordIndex);
+    setSelectedWordsIndex(selectedWordsIndex);
+    console.log("Array of selected words indexes:", selectedWordsIndex);
+    setShowDeleteOption(true);
+  }
+
+  function wordIsUnselected(wordIndex) {
+    let index = selectedWordsIndex.indexOf(wordIndex);
+    selectedWordsIndex.splice(index, 1);
+    setSelectedWordsIndex(selectedWordsIndex);
+    console.log("Array of selected words indexes:", selectedWordsIndex);
+    if (selectedWordsIndex.length === 0) {
+      setShowDeleteOption(false);
+    }
   }
 
   return (
@@ -58,7 +84,8 @@ export default function Vocabulary() {
                 meaning={wordObject.meaning}
                 word={wordObject.word}
                 wordIndex={index}
-                deleteWord={deleteWord}
+                wordIsSelected={wordIsSelected}
+                wordIsUnselected={wordIsUnselected}
               />
             </div>
           );

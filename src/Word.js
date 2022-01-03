@@ -1,12 +1,8 @@
 import React from "react";
 import "./Word.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+import Checkbox from "@mui/material/Checkbox";
 
 export default function Word(props) {
-  function handleWordDelete() {
-    props.deleteWord(props.wordIndex);
-  }
 
   return (
     <div className="border word-wrapper">
@@ -15,14 +11,6 @@ export default function Word(props) {
           <div className="word text-capitalize">{props.word}</div>
           <div className="meaning text-capitalize">{props.meaning}</div>
         </div>
-        <div className="delete-wrapper col-6 align-self-center pe-3">
-          <div className="delete-icon">
-            <FontAwesomeIcon
-              icon={faTrashAlt}
-              color="#c04848"
-              onClick={handleWordDelete}
-            />
-          </div>
         </div>
       </div>
     </div>

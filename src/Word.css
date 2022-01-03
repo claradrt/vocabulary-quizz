@@ -19,18 +19,13 @@
   color: #c04848;
 }
 
-.delete-wrapper {
+.checkbox-wrapper {
   color: #c04848;
-  visibility: hidden;
   width: fit-content;
   text-align: right;
 }
 
-.word-wrapper:hover .delete-wrapper {
-  visibility: visible !important;
-}
-
-.delete-wrapper:hover {
+.checkbox-wrapper:hover {
   cursor: pointer;
 }
 
@@ -44,7 +39,7 @@
   text-align: left;
 }
 
-.delete-icon {
+.checkbox {
   border-radius: 50%;
   width: fit-content;
   height: fit-content;
@@ -52,13 +47,13 @@
   float: right;
 }
 
-.delete-icon:hover {
+.checkbox:hover {
   background-color: #f8f9fa;
   color: white;
 }
 
 @media (max-width: 600px) {
-  .delete-wrapper {
+  .checkbox-wrapper {
     visibility: visible;
     font-size: 15px;
   }

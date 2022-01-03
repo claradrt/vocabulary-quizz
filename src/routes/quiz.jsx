@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import StartQuiz from "../StartQuiz.js";
-
 import QuizButton from "../QuizButton.js";
+
 import { NavLink } from "react-router-dom";
 
 export default function Quiz() {

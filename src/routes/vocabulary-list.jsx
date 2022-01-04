@@ -123,7 +123,7 @@ export default function Vocabulary() {
         parentCheckboxState={parentCheckboxState}
       />
       {vocabularyList &&
-        vocabularyList.reverse().map((wordObject, index) => {
+        vocabularyList.map((wordObject, index) => {
           let checked;
           if (selectedWordsIndex.includes(index)) {
             checked = true;

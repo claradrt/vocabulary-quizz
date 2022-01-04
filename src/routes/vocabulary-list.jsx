@@ -35,8 +35,11 @@ export default function Vocabulary() {
   }
 
   function deleteSelection() {
+    let arrayOfIndex = selectedWordsIndex.sort(function (a, b) {
+      return b - a;
+    });
     setTimeout(() => {
-      for (var wordIndex of selectedWordsIndex) {
+      for (var wordIndex of arrayOfIndex) {
         vocabularyList.splice(wordIndex, 1);
         setVocabularyList([...vocabularyList]);
         localStorage.setItem(
@@ -46,6 +49,7 @@ export default function Vocabulary() {
       }
       setSelectedWordsIndex([]);
       setShowDeleteOption(false);
+      updateParentCheckboxStatus(false, false);
     }, 500);
   }
 

@@ -84,15 +84,30 @@ export default function Vocabulary() {
 
   function handleChange(event) {
     updateParentCheckboxStatus(event.target.checked, false);
+    if (event.target.checked) {
+      checkAllCheckboxes();
+      setShowDeleteOption(true);
+    } else {
+      uncheckAllCheckboxes();
+      setShowDeleteOption(false);
+    }
+  }
+
+  function checkAllCheckboxes() {
+    let array = [];
+    for (let i = 0; i < vocabularyList.length; i++) {
+      array.push(i);
+    }
+    setSelectedWordsIndex(array);
+  }
+
+  function uncheckAllCheckboxes() {
+    setSelectedWordsIndex([]);
   }
 
   return (
     <div className="Vocabulary">
-      {addWord && (
-        <div>
-          <AddWord addNewWord={addNewWord} />
-        </div>
-      )}
+      {addWord && <AddWord addNewWord={addNewWord} />}
       {addWord || (
         <div
           className="border text-center mt-3 add-word-wrapper"
@@ -102,21 +117,32 @@ export default function Vocabulary() {
         </div>
       )}
       <div className="icon-wrapper">
-        {showDeleteOption && (
-          <span className="delete-wrapper">
-            <span className="delete-icon" onClick={deleteSelection}>
-              <FontAwesomeIcon icon={faTrash} color="#4A4A4B" />
-            </span>
-          </span>
-        )}
-        <Checkbox
-          checked={parentCheckboxState.checked}
-          indeterminate={parentCheckboxState.indeterminate}
-          onChange={handleChange}
-        />
+        <div className="row justify-content-center">
+          <div className="col-6"></div>
+          <div className="col-6 pe-3">
+            {showDeleteOption && (
+              <span className="delete-wrapper">
+                <span className="delete-icon" onClick={deleteSelection}>
+                  <FontAwesomeIcon icon={faTrash} color="#4A4A4B" />
+                </span>
+              </span>
+            )}
+            <Checkbox
+              checked={parentCheckboxState.checked}
+              indeterminate={parentCheckboxState.indeterminate}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
       </div>
       {vocabularyList &&
         vocabularyList.map((wordObject, index) => {
+          let checked;
+          if (selectedWordsIndex.includes(index)) {
+            checked = true;
+          } else {
+            checked = false;
+          }
           return (
             <div key={index}>
               <Word
@@ -125,7 +151,7 @@ export default function Vocabulary() {
                 wordIndex={index}
                 wordIsSelected={wordIsSelected}
                 wordIsUnselected={wordIsUnselected}
-                parentCheckboxState={parentCheckboxState.checked}
+                checked={checked}
               />
             </div>
           );

@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Word.css";
 import Checkbox from "@mui/material/Checkbox";
 
 export default function Word(props) {
-  const [checked, setChecked] = useState(props.parentCheckboxState);
-
   const handleChange = (event) => {
-    setChecked(event.target.checked);
     if (event.target.checked) {
       props.wordIsSelected(props.wordIndex);
     } else {
@@ -23,7 +20,7 @@ export default function Word(props) {
         </div>
         <div className="checkbox-wrapper col-6 align-self-center pe-3">
           <label className="checkbox">
-            <Checkbox checked={checked} onChange={handleChange} />
+            <Checkbox checked={props.checked} onChange={handleChange} />
           </label>
         </div>
       </div>

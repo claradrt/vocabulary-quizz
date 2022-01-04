@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import Word from "../Word";
 import AddWord from "../AddWord";
+import ListOptions from "../ListOptions";
 import "../VocabularyList.css";
-
-import Checkbox from "@mui/material/Checkbox";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function Vocabulary() {
   const [vocabularyList, setVocabularyList] = useState(() => {
@@ -116,25 +112,12 @@ export default function Vocabulary() {
           +Add new word
         </div>
       )}
-      <div className="icon-wrapper">
-        <div className="row justify-content-center">
-          <div className="col-6"></div>
-          <div className="col-6 pe-3">
-            {showDeleteOption && (
-              <span className="delete-wrapper">
-                <span className="delete-icon" onClick={deleteSelection}>
-                  <FontAwesomeIcon icon={faTrash} color="#4A4A4B" />
-                </span>
-              </span>
-            )}
-            <Checkbox
-              checked={parentCheckboxState.checked}
-              indeterminate={parentCheckboxState.indeterminate}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-      </div>
+      <ListOptions
+        showDeleteOption={showDeleteOption}
+        handleChange={handleChange}
+        deleteSelection={deleteSelection}
+        parentCheckboxState={parentCheckboxState}
+      />
       {vocabularyList &&
         vocabularyList.map((wordObject, index) => {
           let checked;

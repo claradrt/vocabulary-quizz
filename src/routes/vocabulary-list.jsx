@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Word from "../Word";
 import AddWord from "../AddWord";
 import ListOptions from "../ListOptions";
+
 import "../VocabularyList.css";
 
 export default function Vocabulary() {
@@ -26,7 +27,7 @@ export default function Vocabulary() {
   }
 
   function addNewWord(word) {
-    vocabularyList.push(word);
+    vocabularyList.unshift(word);
     setVocabularyList([...vocabularyList]);
     localStorage.setItem(
       "storedVocabularyList",

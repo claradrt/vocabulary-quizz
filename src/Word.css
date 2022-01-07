@@ -2,7 +2,7 @@
 .add-word-wrapper {
   padding: 5px;
   margin: 5px auto;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 .add-word-wrapper:hover {
@@ -17,16 +17,6 @@
 
 .meaning {
   color: #c04848;
-}
-
-.AddWord {
-  max-width: 600px;
-}
-
-.AddWord button {
-  background-color: transparent;
-  border: none;
-  text-align: left;
 }
 
 .checkbox {

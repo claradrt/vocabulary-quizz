@@ -1,17 +1,5 @@
-.AddWord button {
-  text-align: left;
-  border-radius: 4px;
-  padding: 5px 10px;
-  font-size: 15px;
-  margin: auto 5px;
-}
-
-.AddWord button:hover {
-  background-color: #f8f9fa;
-}
-
-.add-btn-wrapper {
-  display: inline-block;
+.AddWord {
+  max-width: 700px;
 }
 
 .AddWord input {
@@ -31,26 +19,60 @@
   outline-color: rgb(229, 151, 0);
 }
 
-@media (max-width: 400px) {
-  .AddWord .word-input {
-    text-align: center;
-  }
+.AddWord .btn-wrapper {
+  display: inline-flex;
+  justify-content: space-between;
+}
 
-  .AddWord input {
+.AddWord .btn-wrapper button {
+  background-color: transparent;
+  border: none;
+}
+
+.AddWord .btn-wrapper .add-btn,
+.AddWord .btn-wrapper .cancel-btn {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.AddWord .btn-wrapper .add-btn {
+  padding: 0px 15px;
+  margin: auto 5px;
+  opacity: 0.6;
+}
+
+.AddWord .btn-wrapper .add-btn:hover {
+  opacity: 1;
+}
+
+.AddWord .btn-wrapper .cancel-btn {
+  opacity: 0.6;
+  margin: 0px 10px;
+}
+
+.AddWord .btn-wrapper .cancel-btn:hover {
+  opacity: 1;
+}
+
+.AddWord input {
+  width: 100%;
+}
+
+@media (max-width: 770px) {
+  .AddWord .btn-wrapper {
     width: 100%;
   }
-
-  .AddWord button {
-    background-color: #f8f9fa;
-    display: block;
-    font-size: 12px;
-    margin: auto;
-    text-align: center;
+  .AddWord .btn-wrapper .add-btn,
+  .AddWord .btn-wrapper .cancel-btn {
     width: 100%;
-  }
-
-  .add-btn-wrapper {
-    display: block;
     margin-top: 5px;
+  }
+
+  .AddWord .btn-wrapper .cancel-btn {
+    text-align: right;
+  }
+  .AddWord .btn-wrapper .add-btn {
+    background-color: #f8f9fa;
+    opacity: 1;
   }
 }

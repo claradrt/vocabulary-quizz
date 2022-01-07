@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import "./AddWord.css";
 
@@ -30,34 +30,44 @@ export default function AddWord(props) {
     }
   }
 
+  function cancelForm() {
+    alert("Hello");
+  }
+
   return (
-    <div className="mt-4 AddWord mx-auto">
-      <form
-        className="row my-3 gy-1 gx-1 gx-md-3 justify-content-center text-center"
-        onSubmit={handleFormSubmit}
-      >
-        <div className="col-sm col-md-5 word-input">
-          <input
-            type="text"
-            placeholder="Word..."
-            className="text-center text-capitalize "
-            onChange={handleWordInputChange}
-            value={newWord}
-            autoFocus
-          />
-        </div>
-        <div className="col-sm col-md-5">
-          <input
-            type="text"
-            placeholder="Meaning..."
-            className="text-center text-capitalize meaning-input"
-            onChange={handleMeaningInputChange}
-            value={newMeaning}
-          />
-          <div className="text-center add-btn-wrapper">
-            <button type="submit" className="align-self-center">
-              <FontAwesomeIcon icon={faPlus} color="#757575" />
-            </button>
+    <div className="AddWord mt-4 mx-auto">
+      <form onSubmit={handleFormSubmit}>
+        <div className="row my-3 gy-1 gx-1 gx-md-3 justify-content-center text-center">
+          <div className="col-sm col-md-5 word-input">
+            <input
+              type="text"
+              placeholder="Word..."
+              className="text-center text-capitalize "
+              onChange={handleWordInputChange}
+              value={newWord}
+              autoFocus
+            />
+          </div>
+          <div className="col-sm col-md-5 meaning-input">
+            <input
+              type="text"
+              placeholder="Meaning..."
+              className="text-center text-capitalize"
+              onChange={handleMeaningInputChange}
+              value={newMeaning}
+            />
+          </div>
+          <div className="text-center btn-wrapper col-sm col-md-2 gx-0">
+            <div className="add-btn align-self-center">
+              <button type="submit" title="Add word">
+                <FontAwesomeIcon icon={faCheck} color="#004D00" />
+              </button>
+            </div>
+            <div className="cancel-btn align-self-center">
+              <button type="button" title="Cancel" onClick={cancelForm}>
+                <FontAwesomeIcon icon={faTimes} color="#c04848" />
+              </button>
+            </div>
           </div>
         </div>
       </form>

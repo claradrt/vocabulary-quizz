@@ -12,9 +12,14 @@ export default function ListOptions(props) {
         <div className="col-6 pe-3">
           {props.showDeleteOption && (
             <span className="delete-wrapper">
-              <span className="delete-icon" onClick={props.deleteSelection}>
+              <button
+                type="button"
+                className="delete-icon"
+                onClick={props.deleteSelection}
+                title="Delete selection"
+              >
                 <FontAwesomeIcon icon={faTrash} color="#4A4A4B" />
-              </span>
+              </button>
             </span>
           )}
           <Checkbox

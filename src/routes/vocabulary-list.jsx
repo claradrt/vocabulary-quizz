@@ -105,9 +105,15 @@ export default function Vocabulary() {
     setSelectedWordsIndex([]);
   }
 
+  function hideAddWordForm() {
+    setAddWord(false);
+  }
+
   return (
     <div className="Vocabulary">
-      {addWord && <AddWord addNewWord={addNewWord} />}
+      {addWord && (
+        <AddWord addNewWord={addNewWord} hideForm={hideAddWordForm} />
+      )}
       {addWord || (
         <div
           className="border text-center mt-3 add-word-wrapper"

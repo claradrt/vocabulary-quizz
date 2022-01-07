@@ -31,7 +31,7 @@ export default function AddWord(props) {
   }
 
   function cancelForm() {
-    alert("Hello");
+    props.hideForm();
   }
 
   return (

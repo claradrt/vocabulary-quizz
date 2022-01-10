@@ -9,7 +9,7 @@ export default function QuizButton(props) {
         Click on the button below to get tested on your vocabulary list!
       </div>
       <button className="get-quizzed-btn rounded" onClick={props.startGame}>
-        Get quizzed!
+        START QUIZ
       </button>
     </div>
   );

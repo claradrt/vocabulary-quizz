@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-
-import StartQuiz from "../StartQuiz.js";
-import QuizButton from "../QuizButton.js";
-
 import { NavLink } from "react-router-dom";
 
-export default function Quiz() {
+import Quiz from "../Quiz.js";
+import QuizButton from "../QuizButton.js";
+
+export default function VocabularyTest() {
   const [showButton, setShowButton] = useState(true);
   const [total, setTotal] = useState(() => {
     const savedVocabularyList = localStorage.getItem("storedVocabularyList");
@@ -45,9 +44,7 @@ export default function Quiz() {
     return (
       <div className="text-center mt-5">
         {showButton && <QuizButton startGame={startGame} />}
-        {showButton || (
-          <StartQuiz gameIsFinished={gameIsFinished} total={total} />
-        )}
+        {showButton || <Quiz gameIsFinished={gameIsFinished} total={total} />}
       </div>
     );
   }

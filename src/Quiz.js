@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
-import TermTranslation from "./TermTranslation.js";
+
+import Question from "./Question.js";
 import Score from "./Score.js";
 
-export default function StartQuizz(props) {
+export default function Quiz(props) {
   const [vocabularyList, setVocabularyList] = useState(() => {
     const savedVocabularyList = localStorage.getItem("storedVocabularyList");
     const initialValue = JSON.parse(savedVocabularyList);
@@ -56,7 +57,7 @@ export default function StartQuizz(props) {
   return (
     <div>
       <Score total={props.total} score={numberOfRightAnswers} />
-      <TermTranslation
+      <Question
         word={question.wordToTranslate}
         meaning={question.meaningToTranslate}
         answer={question.answer}

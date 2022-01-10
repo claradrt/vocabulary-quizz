@@ -1,10 +1,10 @@
-.TermTranslation {
+.Question {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
 }
 
-.TermTranslation div {
+.Question div {
   margin: 20px;
 }
 
@@ -14,11 +14,11 @@
 }
 
 @media (max-width: 600px) {
-  .TermTranslation {
+  .Question {
     font-size: 15px;
   }
 
-  .TermTranslation div {
+  .Question div {
     margin: 10px;
   }
 

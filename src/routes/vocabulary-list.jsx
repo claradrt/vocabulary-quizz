@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Word from "../Word";
 import AddWord from "../AddWord";
-import ListOptions from "../ListOptions";
+import VocabularyListOptions from "../VocabularyListOptions";
 
 import "../VocabularyList.css";
 
@@ -123,7 +123,7 @@ export default function Vocabulary() {
           +Add new word
         </div>
       )}
-      <ListOptions
+      <VocabularyListOptions
         showDeleteOption={showDeleteOption}
         handleChange={handleChange}
         deleteSelection={deleteSelection}

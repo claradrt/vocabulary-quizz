@@ -1,11 +1,12 @@
 import React from "react";
-import ConfirmationModal from "./ConfirmationModal";
+
+import DeleteModal from "./DeleteModal";
 
 import Checkbox from "@mui/material/Checkbox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-export default function ListOptions(props) {
+export default function VocabularyListOptions(props) {
   const [openModal, setOpenModal] = React.useState(false);
 
   function onClick() {
@@ -45,7 +46,7 @@ export default function ListOptions(props) {
           />
         </div>
       </div>
-      <ConfirmationModal
+      <DeleteModal
         open={openModal}
         handleClose={handleClose}
         handleDelete={handleDelete}

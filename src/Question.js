@@ -1,11 +1,13 @@
 import React from "react";
-import "./TermTranslation.css";
+
 import AnswerForm from "./AnswerForm";
 
-export default function TermTranslation(props) {
+import "./Question.css";
+
+export default function Question(props) {
   if (props.meaning === "") {
     return (
-      <div className="TermTranslation">
+      <div className="Question">
         <div className="row justify-content-center gx-1">
           <div className="col-sm">
             <h2>Word</h2>
@@ -24,7 +26,7 @@ export default function TermTranslation(props) {
     );
   } else {
     return (
-      <div className="TermTranslation">
+      <div className="Question">
         <div className=" row justify-content-center gx-1">
           <div className="col-sm">
             <h2>Word</h2>

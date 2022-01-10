@@ -23,3 +23,24 @@
   cursor: pointer;
   background-color: #f8f9fa;
 }
+
+.Quiz .close-quiz {
+  float: right;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.Quiz .close-quiz:hover {
+  opacity: 1;
+}
+
+.Quiz .question-wrapper {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+@media (max-width: 1000px) {
+  .Quiz .close-quiz {
+    opacity: 1;
+  }
+}

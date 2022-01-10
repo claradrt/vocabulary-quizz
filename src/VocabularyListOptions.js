@@ -1,6 +1,6 @@
 import React from "react";
 
-import DeleteModal from "./DeleteModal";
+import ConfirmationModal from "./ConfirmationModal";
 
 import Checkbox from "@mui/material/Checkbox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -46,10 +46,14 @@ export default function VocabularyListOptions(props) {
           />
         </div>
       </div>
-      <DeleteModal
+      <ConfirmationModal
         open={openModal}
         handleClose={handleClose}
-        handleDelete={handleDelete}
+        confirmAction={handleDelete}
+        dialogTitle="Are you sure you want to delete the selection?"
+        dialogContentText="This action cannot be undone."
+        confirmButtonIcon={<FontAwesomeIcon icon={faTrash} />}
+        confirmButtonText="Delete"
       />
     </div>
   );

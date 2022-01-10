@@ -7,10 +7,8 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-export default function DeleteModal(props) {
+export default function ConfirmationModal(props) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -23,18 +21,22 @@ export default function DeleteModal(props) {
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
-          {"Are you sure you want to delete the selection?"}
+          {props.dialogTitle}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText>This action cannot be undone.</DialogContentText>
+          <DialogContentText>{props.dialogContentText}</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={props.handleClose} variant="outlined">
             Cancel
           </Button>
-          <Button onClick={props.handleDelete} autoFocus variant="contained">
-            <FontAwesomeIcon icon={faTrash} />{" "}
-            <p className="ps-2 my-0">Delete</p>
+          <Button onClick={props.confirmAction} autoFocus variant="contained">
+            {(props.confirmButtonIcon && (
+              <React.Fragment>
+                <span>{props.confirmButtonIcon}</span>
+                <p className="ps-2 my-0">{props.confirmButtonText}</p>
+              </React.Fragment>
+            )) || <p className="my-0">{props.confirmButtonText}</p>}
           </Button>
         </DialogActions>
       </Dialog>

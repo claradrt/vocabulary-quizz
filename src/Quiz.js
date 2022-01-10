@@ -2,6 +2,10 @@ import React, { useState, useEffect, useCallback } from "react";
 
 import Question from "./Question.js";
 import Score from "./Score.js";
+import ConfirmationModal from "./ConfirmationModal.js";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default function Quiz(props) {
   const [vocabularyList, setVocabularyList] = useState(() => {
@@ -12,6 +16,8 @@ export default function Quiz(props) {
   const [question, setQuestion] = useState({});
   const [numberOfRightAnswers, setNumberOfRightAnswers] = useState(0);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [openConfirmationModal, setOpenConfirmationModal] =
+    React.useState(false);
 
   function addPointToScore() {
     setNumberOfRightAnswers(numberOfRightAnswers + 1);
@@ -67,16 +73,37 @@ export default function Quiz(props) {
     setIsInitialized(true);
   }, [newWordToTranslate, isInitialized]);
 
+  function onClick() {
+    setOpenConfirmationModal(true);
+  }
+
+  function handleClose() {
+    setOpenConfirmationModal(false);
+  }
+
   return (
-    <div>
-      <Score total={props.total} score={numberOfRightAnswers} />
-      <Question
-        word={question.wordToTranslate}
-        meaning={question.meaningToTranslate}
-        answer={question.answer}
-        newWordToTranslate={newWordToTranslate}
-        addPointToScore={addPointToScore}
-      />
+    <div className="Quiz">
+      <div className="question-wrapper">
+        <Score total={props.total} score={numberOfRightAnswers} />
+        <span className="close-quiz" title="Stop quiz" onClick={onClick}>
+          <FontAwesomeIcon icon={faTimes} color="#c04848" />
+        </span>
+        <ConfirmationModal
+          open={openConfirmationModal}
+          handleClose={handleClose}
+          confirmAction={props.gameIsFinished}
+          dialogTitle="Are you sure you want to stop the quiz?"
+          dialogContentText="You will lose your progress"
+          confirmButtonText="Stop quiz"
+        />
+        <Question
+          word={question.wordToTranslate}
+          meaning={question.meaningToTranslate}
+          answer={question.answer}
+          newWordToTranslate={newWordToTranslate}
+          addPointToScore={addPointToScore}
+        />
+      </div>
     </div>
   );
 }

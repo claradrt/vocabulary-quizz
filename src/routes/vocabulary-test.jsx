@@ -42,7 +42,7 @@ export default function VocabularyTest() {
     );
   } else {
     return (
-      <div className="text-center mt-5">
+      <div className="VocabularyTest text-center mt-5">
         {showButton && <QuizButton startGame={startGame} />}
         {showButton || <Quiz gameIsFinished={gameIsFinished} total={total} />}
       </div>

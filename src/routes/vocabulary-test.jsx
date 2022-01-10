@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import Quiz from "../Quiz.js";
 import QuizButton from "../QuizButton.js";
+import EndOfGameDialog from "../EndOfGameDialog.js";
 
 export default function VocabularyTest() {
   const [showButton, setShowButton] = useState(true);
@@ -15,6 +16,7 @@ export default function VocabularyTest() {
       return 0;
     }
   });
+  const [gameEnded, setGameEnded] = useState(false);
 
   function startGame() {
     setShowButton(false);
@@ -22,7 +24,7 @@ export default function VocabularyTest() {
   }
 
   function gameIsFinished() {
-    setShowButton(true);
+    setGameEnded(true);
   }
 
   if (total === 0) {
@@ -45,6 +47,13 @@ export default function VocabularyTest() {
       <div className="VocabularyTest text-center mt-5">
         {showButton && <QuizButton startGame={startGame} />}
         {showButton || <Quiz gameIsFinished={gameIsFinished} total={total} />}
+        <EndOfGameDialog
+          open={gameEnded}
+          handleClose={() => {
+            setShowButton(true);
+            setGameEnded(false);
+          }}
+        />
       </div>
     );
   }

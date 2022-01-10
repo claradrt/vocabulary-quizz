@@ -60,7 +60,6 @@ export default function Quiz(props) {
       vocabularyList.splice(randomTermIndex, 1);
       setVocabularyList(vocabularyList);
     } else {
-      alert("There are no more words to guess");
       props.gameIsFinished();
     }
   }, [props, vocabularyList]);

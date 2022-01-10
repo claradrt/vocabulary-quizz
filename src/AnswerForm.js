@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import ShowAnswer from "./ShowAnswer";
 
 import "./AnswerForm.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +14,24 @@ export default function AnswerForm(props) {
   const [disabled, setDisabled] = useState(false);
 
   const textInput = React.createRef();
+
+  const answerStatusRendering = {
+    "no-answer": (
+      <button className="submit-btn" type="submit">
+        Submit
+      </button>
+    ),
+    "correct-answer": (
+      <span className="check-icon">
+        <FontAwesomeIcon icon={faCheck} color="green" />
+      </span>
+    ),
+    "incorrect-answer": (
+      <span className="check-icon">
+        <FontAwesomeIcon icon={faTimes} color="red" />
+      </span>
+    ),
+  };
 
   useEffect(() => {
     if (textInput.current !== null) {
@@ -60,23 +79,6 @@ export default function AnswerForm(props) {
     props.newWordToTranslate();
     setShowAnswer(false);
   }
-  const answerStatusRendering = {
-    "no-answer": (
-      <button className="submit-btn" type="submit">
-        Submit
-      </button>
-    ),
-    "correct-answer": (
-      <span className="check-icon">
-        <FontAwesomeIcon icon={faCheck} color="green" />
-      </span>
-    ),
-    "incorrect-answer": (
-      <span className="check-icon">
-        <FontAwesomeIcon icon={faTimes} color="red" />
-      </span>
-    ),
-  };
 
   return (
     <form className="AnswerForm" onSubmit={handleSubmit}>

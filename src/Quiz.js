@@ -17,28 +17,41 @@ export default function Quiz(props) {
     setNumberOfRightAnswers(numberOfRightAnswers + 1);
   }
 
+  function randomAttribute() {
+    const attributes = { 1: "word", 2: "meaning" };
+    let randomAttribute = attributes[Math.floor(Math.random() * 2)];
+    return randomAttribute;
+  }
+
+  function buildQuestion(word, meaning, answer) {
+    let questionObject = {
+      wordToTranslate: word,
+      meaningToTranslate: meaning,
+      answer: answer,
+    };
+    return questionObject;
+  }
+
   const newWordToTranslate = useCallback(() => {
     if (vocabularyList.length !== 0) {
-      const attributes = ["word", "meaning"];
-      let randomAttributeIndex = Math.floor(Math.random() * 2);
+      const wordOrMeaning = randomAttribute();
       let randomTermIndex = Math.floor(Math.random() * vocabularyList.length);
       let questionObject;
-      if (attributes[randomAttributeIndex] === "word") {
-        questionObject = {
-          wordToTranslate: vocabularyList[randomTermIndex].word,
-          meaningToTranslate: "",
-          answer: vocabularyList[randomTermIndex].meaning,
-        };
+      if (wordOrMeaning === "word") {
+        questionObject = buildQuestion(
+          vocabularyList[randomTermIndex].word,
+          "",
+          vocabularyList[randomTermIndex].meaning
+        );
       } else {
-        questionObject = {
-          wordToTranslate: "",
-          meaningToTranslate: vocabularyList[randomTermIndex].meaning,
-          answer: vocabularyList[randomTermIndex].word,
-        };
+        questionObject = buildQuestion(
+          "",
+          vocabularyList[randomTermIndex].meaning,
+          vocabularyList[randomTermIndex].word
+        );
       }
       setQuestion(questionObject);
       vocabularyList.splice(randomTermIndex, 1);
-      console.log(vocabularyList);
       setVocabularyList(vocabularyList);
     } else {
       alert("There are no more words to guess");

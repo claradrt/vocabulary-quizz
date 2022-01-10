@@ -17,22 +17,13 @@ export default function Vocabulary() {
     checked: false,
     indeterminate: false,
   });
-  const [addWord, setAddWord] = useState(false);
+  const [showAddWordForm, setShowAddWordForm] = useState(false);
 
   function updateParentCheckboxStatus(checked, indeterminate) {
     const checkboxStatus = { ...parentCheckboxState };
     checkboxStatus.checked = checked;
     checkboxStatus.indeterminate = indeterminate;
     setParentCheckboxState(checkboxStatus);
-  }
-
-  function addNewWord(word) {
-    vocabularyList.unshift(word);
-    setVocabularyList([...vocabularyList]);
-    localStorage.setItem(
-      "storedVocabularyList",
-      JSON.stringify(vocabularyList)
-    );
   }
 
   function deleteSelection() {
@@ -54,8 +45,17 @@ export default function Vocabulary() {
     }, 500);
   }
 
+  function addNewWord(word) {
+    vocabularyList.unshift(word);
+    setVocabularyList([...vocabularyList]);
+    localStorage.setItem(
+      "storedVocabularyList",
+      JSON.stringify(vocabularyList)
+    );
+  }
+
   function handleClick() {
-    setAddWord(true);
+    setShowAddWordForm(true);
   }
 
   function wordIsSelected(wordIndex) {
@@ -83,7 +83,7 @@ export default function Vocabulary() {
     }
   }
 
-  function handleChange(event) {
+  function handleParentCheckboxChange(event) {
     updateParentCheckboxStatus(event.target.checked, false);
     if (event.target.checked) {
       checkAllCheckboxes();
@@ -107,15 +107,15 @@ export default function Vocabulary() {
   }
 
   function hideAddWordForm() {
-    setAddWord(false);
+    setShowAddWordForm(false);
   }
 
   return (
     <div className="Vocabulary">
-      {addWord && (
+      {showAddWordForm && (
         <AddWord addNewWord={addNewWord} hideForm={hideAddWordForm} />
       )}
-      {addWord || (
+      {showAddWordForm || (
         <div
           className="border text-center mt-3 add-word-wrapper"
           onClick={handleClick}
@@ -125,9 +125,9 @@ export default function Vocabulary() {
       )}
       <VocabularyListOptions
         showDeleteOption={showDeleteOption}
-        handleChange={handleChange}
-        deleteSelection={deleteSelection}
         parentCheckboxState={parentCheckboxState}
+        handleChange={handleParentCheckboxChange}
+        deleteSelection={deleteSelection}
       />
       {vocabularyList &&
         vocabularyList.map((wordObject, index) => {

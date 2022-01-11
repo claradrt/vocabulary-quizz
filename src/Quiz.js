@@ -11,7 +11,7 @@ export default function Quiz(props) {
     return initialValue || [];
   });
   const [question, setQuestion] = useState({});
-  const [numberOfRightAnswers, setNumberOfRightAnswers] = useState(0);
+  const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState(0);
   const [isInitialized, setIsInitialized] = useState(false);
   const [openConfirmationModal, setOpenConfirmationModal] = useState(false);
   const [totalOfRemainingQuestions, setTotalOfRemainingQuestions] = useState(
@@ -19,7 +19,7 @@ export default function Quiz(props) {
   );
 
   function addPointToScore() {
-    setNumberOfRightAnswers(numberOfRightAnswers + 1);
+    setNumberOfCorrectAnswers(numberOfCorrectAnswers + 1);
   }
 
   function decrementRemainingQuestions() {
@@ -87,7 +87,7 @@ export default function Quiz(props) {
     <div className="Quiz">
       <Score
         total={props.total}
-        score={numberOfRightAnswers}
+        score={numberOfCorrectAnswers}
         remaining={totalOfRemainingQuestions}
       />
 

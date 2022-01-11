@@ -1,6 +1,7 @@
 .answer {
   font-size: 22px;
   margin: 20px;
+  text-transform: capitalize;
 }
 
 .next-word-btn {
@@ -8,6 +9,14 @@
   border-radius: 4px;
   margin-top: 10px;
   cursor: pointer;
+  padding: 2px;
+  position: relative;
+}
+
+.ShowAnswer .icon {
+  position: absolute;
+  right: 1px;
+  margin-right: 10px;
 }
 
 @media (max-width: 600px) {

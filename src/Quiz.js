@@ -82,27 +82,27 @@ export default function Quiz(props) {
 
   return (
     <div className="Quiz">
-      <div className="question-wrapper">
-        <Score total={props.total} score={numberOfRightAnswers} />
-        <span className="close-quiz" title="Stop quiz" onClick={onClick}>
-          <FontAwesomeIcon icon={faTimes} color="#c04848" />
-        </span>
+      <Score total={props.total} score={numberOfRightAnswers} />
+      <span className="close-quiz" title="Stop quiz" onClick={onClick}>
+        <FontAwesomeIcon icon={faTimes} color="#c04848" />
+      </span>
+      {openConfirmationModal && (
         <ConfirmationModal
           open={openConfirmationModal}
           handleClose={handleClose}
-          confirmAction={props.gameIsFinished}
+          confirmAction={props.gameIsStopped}
           dialogTitle="Are you sure you want to stop the quiz?"
           dialogContentText="You will lose your progress"
           confirmButtonText="Stop quiz"
         />
-        <Question
-          word={question.wordToTranslate}
-          meaning={question.meaningToTranslate}
-          answer={question.answer}
-          newWordToTranslate={newWordToTranslate}
-          addPointToScore={addPointToScore}
-        />
-      </div>
+      )}
+      <Question
+        word={question.wordToTranslate}
+        meaning={question.meaningToTranslate}
+        answer={question.answer}
+        newWordToTranslate={newWordToTranslate}
+        addPointToScore={addPointToScore}
+      />
     </div>
   );
 }

@@ -27,6 +27,10 @@ export default function VocabularyTest() {
     setGameEnded(true);
   }
 
+  function stopGame() {
+    setShowButton(true);
+  }
+
   if (total === 0) {
     return (
       <div className="instructions text-center mt-5">
@@ -46,14 +50,22 @@ export default function VocabularyTest() {
     return (
       <div className="VocabularyTest text-center mt-5">
         {showButton && <QuizButton startGame={startGame} />}
-        {showButton || <Quiz gameIsFinished={gameIsFinished} total={total} />}
-        <EndOfGameDialog
-          open={gameEnded}
-          handleClose={() => {
-            setShowButton(true);
-            setGameEnded(false);
-          }}
-        />
+        {showButton || (
+          <Quiz
+            gameIsFinished={gameIsFinished}
+            gameIsStopped={stopGame}
+            total={total}
+          />
+        )}
+        {gameEnded && (
+          <EndOfGameDialog
+            open={gameEnded}
+            handleClose={() => {
+              setShowButton(true);
+              setGameEnded(false);
+            }}
+          />
+        )}
       </div>
     );
   }

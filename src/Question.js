@@ -8,12 +8,12 @@ export default function Question(props) {
   if (props.meaning === "") {
     return (
       <div className="Question">
-        <div className="row justify-content-center gx-1">
-          <div className="col-sm">
+        <div className="row justify-content-center">
+          <div className="col-sm-5 column">
             <h2>Word</h2>
             <div className="wordToTranslate">{props.word}</div>
           </div>
-          <div className="col-sm">
+          <div className="col-sm-5 column">
             <h2>Meaning</h2>
             <AnswerForm
               answer={props.answer}
@@ -27,8 +27,8 @@ export default function Question(props) {
   } else {
     return (
       <div className="Question">
-        <div className=" row justify-content-center gx-1">
-          <div className="col-sm">
+        <div className="row justify-content-center">
+          <div className="col-sm-5 column">
             <h2>Word</h2>
             <AnswerForm
               answer={props.answer}
@@ -36,7 +36,7 @@ export default function Question(props) {
               addPointToScore={props.addPointToScore}
             />
           </div>
-          <div className="col-sm">
+          <div className="col-sm-5 column">
             <h2>Meaning</h2>
             <div className="wordToTranslate">{props.meaning}</div>
           </div>

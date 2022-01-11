@@ -13,7 +13,7 @@ export default function EndOfGameDialog(props) {
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <div>
+    <div className="EndOfGameDialog">
       <Dialog
         fullScreen={fullScreen}
         open={props.open}
@@ -27,7 +27,7 @@ export default function EndOfGameDialog(props) {
           <DialogContentText>You rock</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={props.handleClose} variant="outlined">
+          <Button onClick={props.handleClose} variant="outlined">
             Close
           </Button>
         </DialogActions>

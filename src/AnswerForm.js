@@ -15,6 +15,12 @@ export default function AnswerForm(props) {
 
   const textInput = React.createRef();
 
+  const statusMapping = {
+    noAnswer: "no-answer",
+    correctAnswer: "correct-answer",
+    incorrectAnswer: "incorrect-answer",
+  };
+
   const answerStatusRendering = {
     "no-answer": (
       <button className="submit-btn" type="submit">
@@ -65,10 +71,10 @@ export default function AnswerForm(props) {
   }
 
   function handleCorrectAnswer(event) {
-    setAnswerStatus("correct-answer");
+    setAnswerStatus(statusMapping.correctAnswer);
     props.addPointToScore();
     setTimeout(() => {
-      setAnswerStatus("no-answer");
+      setAnswerStatus(statusMapping.noAnswer);
       setDisabled(false);
       props.newWordToTranslate();
       event.target[0].value = "";
@@ -76,9 +82,9 @@ export default function AnswerForm(props) {
   }
 
   function handleIncorrectAnswer() {
-    setAnswerStatus("incorrect-answer");
+    setAnswerStatus(statusMapping.incorrectAnswer);
     setTimeout(() => {
-      setAnswerStatus("no-answer");
+      setAnswerStatus(statusMapping.correctAnswer);
       setDisabled(false);
       setShowAnswer(true);
     }, 2000);

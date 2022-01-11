@@ -53,6 +53,7 @@ export default function AnswerForm(props) {
     } else {
       handleIncorrectAnswer();
     }
+    props.decrementRemainingQuestions();
   }
 
   function handleCorrectAnswer(event) {
@@ -78,6 +79,7 @@ export default function AnswerForm(props) {
   function nextWord() {
     props.newWordToTranslate();
     setShowAnswer(false);
+    props.decrementRemainingQuestions();
   }
 
   return (

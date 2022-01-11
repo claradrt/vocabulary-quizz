@@ -1,10 +1,10 @@
-.answer {
+.ShowAnswer .answer {
   font-size: 22px;
   margin: 20px;
   text-transform: capitalize;
 }
 
-.next-word-btn {
+.ShowAnswer .next-word-btn {
   border: 1px solid black;
   border-radius: 4px;
   margin-top: 10px;
@@ -20,7 +20,7 @@
 }
 
 @media (max-width: 600px) {
-  .answer {
+  .ShowAnswer .answer {
     font-size: 20px;
   }
 }

@@ -16,11 +16,18 @@ export default function Quiz(props) {
   const [question, setQuestion] = useState({});
   const [numberOfRightAnswers, setNumberOfRightAnswers] = useState(0);
   const [isInitialized, setIsInitialized] = useState(false);
-  const [openConfirmationModal, setOpenConfirmationModal] =
-    React.useState(false);
+  const [openConfirmationModal, setOpenConfirmationModal] = useState(false);
+  const [totalOfRemainingQuestions, setTotalOfRemainingQuestions] = useState(
+    props.total - 1
+  );
 
   function addPointToScore() {
     setNumberOfRightAnswers(numberOfRightAnswers + 1);
+  }
+
+  function decrementRemainingQuestions() {
+    console.log("remaining:", totalOfRemainingQuestions);
+    setTotalOfRemainingQuestions(totalOfRemainingQuestions - 1);
   }
 
   function randomAttribute() {
@@ -82,7 +89,11 @@ export default function Quiz(props) {
 
   return (
     <div className="Quiz">
-      <Score total={props.total} score={numberOfRightAnswers} />
+      <Score
+        total={props.total}
+        score={numberOfRightAnswers}
+        remaining={totalOfRemainingQuestions}
+      />
       <span className="close-quiz" title="Stop quiz" onClick={onClick}>
         <FontAwesomeIcon icon={faTimes} color="#c04848" />
       </span>
@@ -102,6 +113,7 @@ export default function Quiz(props) {
         answer={question.answer}
         newWordToTranslate={newWordToTranslate}
         addPointToScore={addPointToScore}
+        decrementRemainingQuestions={decrementRemainingQuestions}
       />
     </div>
   );

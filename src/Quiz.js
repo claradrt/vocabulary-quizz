@@ -4,9 +4,6 @@ import Question from "./Question.js";
 import Score from "./Score.js";
 import ConfirmationModal from "./ConfirmationModal.js";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-
 export default function Quiz(props) {
   const [vocabularyList, setVocabularyList] = useState(() => {
     const savedVocabularyList = localStorage.getItem("storedVocabularyList");
@@ -26,7 +23,6 @@ export default function Quiz(props) {
   }
 
   function decrementRemainingQuestions() {
-    console.log("remaining:", totalOfRemainingQuestions);
     setTotalOfRemainingQuestions(totalOfRemainingQuestions - 1);
   }
 
@@ -94,9 +90,23 @@ export default function Quiz(props) {
         score={numberOfRightAnswers}
         remaining={totalOfRemainingQuestions}
       />
-      <span className="close-quiz" title="Stop quiz" onClick={onClick}>
-        <FontAwesomeIcon icon={faTimes} color="#c04848" />
-      </span>
+
+      <Question
+        word={question.wordToTranslate}
+        meaning={question.meaningToTranslate}
+        answer={question.answer}
+        newWordToTranslate={newWordToTranslate}
+        addPointToScore={addPointToScore}
+        remaining={totalOfRemainingQuestions}
+        decrementRemainingQuestions={decrementRemainingQuestions}
+      />
+      <button
+        className="close-quiz-btn mt-5"
+        title="Stop quiz"
+        onClick={onClick}
+      >
+        Stop quiz
+      </button>
       {openConfirmationModal && (
         <ConfirmationModal
           open={openConfirmationModal}
@@ -107,14 +117,6 @@ export default function Quiz(props) {
           confirmButtonText="Stop quiz"
         />
       )}
-      <Question
-        word={question.wordToTranslate}
-        meaning={question.meaningToTranslate}
-        answer={question.answer}
-        newWordToTranslate={newWordToTranslate}
-        addPointToScore={addPointToScore}
-        decrementRemainingQuestions={decrementRemainingQuestions}
-      />
     </div>
   );
 }

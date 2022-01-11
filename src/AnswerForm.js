@@ -33,6 +33,14 @@ export default function AnswerForm(props) {
     ),
   };
 
+  const btnContent = () => {
+    if (props.remaining > 0) {
+      return "Next word";
+    } else {
+      return "Finish";
+    }
+  };
+
   useEffect(() => {
     if (textInput.current !== null) {
       textInput.current.focus();
@@ -100,7 +108,13 @@ export default function AnswerForm(props) {
           </div>
         </div>
       )}
-      {showAnswer && <ShowAnswer answer={props.answer} nextWord={nextWord} />}
+      {showAnswer && (
+        <ShowAnswer
+          answer={props.answer}
+          nextWord={nextWord}
+          btnContent={btnContent()}
+        />
+      )}
     </form>
   );
 }

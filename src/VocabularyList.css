@@ -24,13 +24,13 @@
   background-color: #f8f9fa;
 }
 
-.Quiz .close-quiz {
-  float: right;
-  cursor: pointer;
-  opacity: 0.7;
+.Quiz .close-quiz-btn {
+  margin: 2px;
+  border-radius: 4px;
+  border: 1px solid black;
 }
 
-.Quiz .close-quiz:hover {
+.Quiz .close-quiz-btn:hover {
   opacity: 1;
 }
 
@@ -40,7 +40,7 @@
 }
 
 @media (max-width: 1000px) {
-  .Quiz .close-quiz {
+  .Quiz .close-quiz-btn {
     opacity: 1;
   }
 }

@@ -4,7 +4,7 @@ import "./Score.css";
 
 export default function Score(props) {
   return (
-    <div className="Score d-inline-block mb-5">
+    <div className="Score d-inline-block mb-4">
       <h1>
         Score: {props.score} / {props.total - (props.remaining + 1)}
       </h1>

@@ -13,7 +13,7 @@ export default function ShowAnswer(props) {
     <div className="ShowAnswer">
       <span className="answer">{props.answer}</span>
       <div className="next-word-btn" onClick={handleClick}>
-        <span className="next">Next word</span>
+        <span className="next">{props.btnContent}</span>
         <span className="icon">
           <FontAwesomeIcon icon={faArrowRight} />
         </span>

@@ -1,3 +1,8 @@
+.Vocabulary {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 .icon-wrapper {
   padding: 5px;
   margin: 5px auto;
@@ -22,25 +27,4 @@
 .delete-icon:hover {
   cursor: pointer;
   background-color: #f8f9fa;
-}
-
-.Quiz .close-quiz-btn {
-  margin: 2px;
-  border-radius: 4px;
-  border: 1px solid black;
-}
-
-.Quiz .close-quiz-btn:hover {
-  opacity: 1;
-}
-
-.Quiz .question-wrapper {
-  width: fit-content;
-  margin: 0 auto;
-}
-
-@media (max-width: 1000px) {
-  .Quiz .close-quiz-btn {
-    opacity: 1;
-  }
 }

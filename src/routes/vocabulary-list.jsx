@@ -112,6 +112,10 @@ export default function Vocabulary() {
 
   return (
     <div className="Vocabulary">
+      <p className="d-inline-block mx-auto mt-3">
+        You currently have {vocabularyList.length} words in your vocabulary
+        list.
+      </p>
       {showAddWordForm && (
         <AddWord addNewWord={addNewWord} hideForm={hideAddWordForm} />
       )}

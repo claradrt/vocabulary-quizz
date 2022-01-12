@@ -38,7 +38,7 @@ export default function AddWord(props) {
   }
 
   return (
-    <div className="AddWord mt-4 mx-auto">
+    <div className="AddWord mt-2 mx-auto">
       <form onSubmit={handleFormSubmit}>
         <div className="row my-3 gy-1 gx-1 gx-md-3 justify-content-center text-center">
           <div className="col-sm col-md-5 word-input">

@@ -4,6 +4,8 @@ import Question from "./Question.js";
 import Score from "./Score.js";
 import ConfirmationModal from "./ConfirmationModal.js";
 
+import "./Quiz.css";
+
 export default function Quiz(props) {
   const [vocabularyList, setVocabularyList] = useState(() => {
     const savedVocabularyList = localStorage.getItem("storedVocabularyList");

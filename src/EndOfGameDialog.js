@@ -55,7 +55,7 @@ export default function EndOfGameDialog(props) {
       },
       {
         threshold: 100,
-        dialogTitle: `${successPurcentage}% of success: Woohoo! Awesome 🚀🚀🚀`,
+        dialogTitle: `${successPurcentage}% of success: Awesome 🚀🚀🚀`,
         dialogContentText: "There's nothing left to teach you...",
       },
     ];

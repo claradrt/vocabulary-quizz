@@ -7,14 +7,16 @@ import NavBar from "./NavBar.js";
 
 export default function App() {
   return (
-    <div className="container App">
-      <NavBar />
+    <div className=" App">
       <HashRouter>
-        <Routes>
-          <Route path="/home" element={<VocabularyTest />} />
-          <Route path="/" element={<Navigate replace to="/home" />} />
-          <Route path="/vocabulary" element={<Vocabulary />} />
-        </Routes>
+        <NavBar />
+        <div className="container">
+          <Routes>
+            <Route path="/home" element={<VocabularyTest />} />
+            <Route path="/" element={<Navigate replace to="/home" />} />
+            <Route path="/vocabulary" element={<Vocabulary />} />
+          </Routes>
+        </div>
       </HashRouter>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +8,7 @@ import "./AddWord.css";
 export default function AddWord(props) {
   const [newMeaning, setNewMeaning] = useState("");
   const [newWord, setNewWord] = useState("");
+  const inputRef = useRef();
 
   function handleMeaningInputChange(event) {
     setNewMeaning(event.target.value);
@@ -29,6 +30,7 @@ export default function AddWord(props) {
     } else {
       alert("Please make sure input fields are not empty");
     }
+    inputRef.current.focus();
   }
 
   function cancelForm() {
@@ -47,6 +49,7 @@ export default function AddWord(props) {
               onChange={handleWordInputChange}
               value={newWord}
               autoFocus
+              ref={inputRef}
             />
           </div>
           <div className="col-sm col-md-5 meaning-input">

@@ -83,7 +83,7 @@ export default function AnswerForm(props) {
   function handleIncorrectAnswer() {
     setAnswerStatus(statusMapping.incorrectAnswer);
     setTimeout(() => {
-      setAnswerStatus(statusMapping.correctAnswer);
+      setAnswerStatus(statusMapping.noAnswer);
       setDisabled(false);
       setShowAnswer(true);
     }, 2000);

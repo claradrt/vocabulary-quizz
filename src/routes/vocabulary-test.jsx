@@ -16,7 +16,13 @@ export default function VocabularyTest() {
       return 0;
     }
   });
+  const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState(0);
+
   const [gameEnded, setGameEnded] = useState(false);
+
+  function addPointToScore() {
+    setNumberOfCorrectAnswers(numberOfCorrectAnswers + 1);
+  }
 
   function startGame() {
     setShowButton(false);
@@ -29,6 +35,7 @@ export default function VocabularyTest() {
 
   function stopGame() {
     setShowButton(true);
+    setNumberOfCorrectAnswers(0);
   }
 
   if (total === 0) {
@@ -55,6 +62,8 @@ export default function VocabularyTest() {
             gameIsFinished={gameIsFinished}
             gameIsStopped={stopGame}
             total={total}
+            score={numberOfCorrectAnswers}
+            addPointToScore={addPointToScore}
           />
         )}
         {gameEnded && (
@@ -63,7 +72,10 @@ export default function VocabularyTest() {
             handleClose={() => {
               setShowButton(true);
               setGameEnded(false);
+              setNumberOfCorrectAnswers(0);
             }}
+            total={total}
+            score={numberOfCorrectAnswers}
           />
         )}
       </div>

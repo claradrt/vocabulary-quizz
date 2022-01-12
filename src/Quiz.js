@@ -14,13 +14,8 @@ export default function Quiz(props) {
   const [isInitialized, setIsInitialized] = useState(false);
   const [openConfirmationModal, setOpenConfirmationModal] = useState(false);
   const [totalOfRemainingQuestions, setTotalOfRemainingQuestions] = useState(
-    props.total - 1
+    vocabularyList.length
   );
-
-  function decrementRemainingQuestions() {
-    console.log("Questions left:", totalOfRemainingQuestions);
-    setTotalOfRemainingQuestions(totalOfRemainingQuestions - 1);
-  }
 
   function randomAttribute() {
     const attributes = { 1: "word", 2: "meaning" };
@@ -58,8 +53,10 @@ export default function Quiz(props) {
       setQuestion(questionObject);
       vocabularyList.splice(randomTermIndex, 1);
       setVocabularyList(vocabularyList);
+      setTotalOfRemainingQuestions(vocabularyList.length);
     } else {
       props.gameIsFinished();
+      setTotalOfRemainingQuestions(-1);
     }
   }, [props, vocabularyList]);
 
@@ -94,7 +91,6 @@ export default function Quiz(props) {
         newWordToTranslate={newWordToTranslate}
         addPointToScore={props.addPointToScore}
         remaining={totalOfRemainingQuestions}
-        decrementRemainingQuestions={decrementRemainingQuestions}
       />
       <button
         className="close-quiz-btn mt-5"

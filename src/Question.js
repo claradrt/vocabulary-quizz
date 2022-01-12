@@ -19,7 +19,6 @@ export default function Question(props) {
               answer={props.answer}
               newWordToTranslate={props.newWordToTranslate}
               addPointToScore={props.addPointToScore}
-              decrementRemainingQuestions={props.decrementRemainingQuestions}
               remaining={props.remaining}
             />
           </div>
@@ -36,7 +35,6 @@ export default function Question(props) {
               answer={props.answer}
               newWordToTranslate={props.newWordToTranslate}
               addPointToScore={props.addPointToScore}
-              decrementRemainingQuestions={props.decrementRemainingQuestions}
               remaining={props.remaining}
             />
           </div>

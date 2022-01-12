@@ -22,17 +22,17 @@ export default function AnswerForm(props) {
   };
 
   const answerStatusRendering = {
-    "no-answer": (
+    [statusMapping.noAnswer]: (
       <button className="submit-btn" type="submit">
         Submit
       </button>
     ),
-    "correct-answer": (
+    [statusMapping.correctAnswer]: (
       <span className="check-icon">
         <FontAwesomeIcon icon={faCheck} color="green" />
       </span>
     ),
-    "incorrect-answer": (
+    [statusMapping.incorrectAnswer]: (
       <span className="check-icon">
         <FontAwesomeIcon icon={faTimes} color="red" />
       </span>
@@ -67,7 +67,6 @@ export default function AnswerForm(props) {
     } else {
       handleIncorrectAnswer();
     }
-    props.decrementRemainingQuestions();
   }
 
   function handleCorrectAnswer(event) {
@@ -93,7 +92,6 @@ export default function AnswerForm(props) {
   function nextWord() {
     props.newWordToTranslate();
     setShowAnswer(false);
-    props.decrementRemainingQuestions();
   }
 
   return (

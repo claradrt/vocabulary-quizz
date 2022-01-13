@@ -17,7 +17,6 @@ export default function NavBar() {
 
   function handleClick() {
     setClicked(!clicked);
-    console.log(!clicked);
   }
 
   return (
@@ -32,7 +31,7 @@ export default function NavBar() {
         {menuItems.map((item, index) => {
           return (
             <li key={index}>
-              <Link className={item.cName} to={item.url}>
+              <Link className={item.cName} to={item.url} onClick={handleClick}>
                 {item.title}
               </Link>
             </li>

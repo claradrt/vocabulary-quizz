@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+.Vocabulary .total-of-words strong {
+  color: var(--secondary-color);
+}
+
 .icon-wrapper {
   padding: 5px;
   margin: 5px auto;

@@ -1,4 +1,4 @@
 .Score .remaining {
   font-size: 18px;
-  color: #4a4a4b;
+  color: var(--secondary-color);
 }

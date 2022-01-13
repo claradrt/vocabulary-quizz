@@ -1,0 +1,32 @@
+:root {
+  --primary-color: #250902;
+  --secondary-color: #ad2831;
+  --tertiary-color: #38040e;
+  --primary-font-color: white;
+  --secondary-font-color: #38040e;
+  --navbar-gradient: linear-gradient(90deg, #38040e 0%, #ad2831 100%);
+  --hover: #c62f39;
+  --button-gradient: linear-gradient(
+    to right,
+    #ad2831 0%,
+    #38040e 51%,
+    #ad2831 100%
+  );
+}
+
+.MuiButton-root.MuiButton-contained {
+  background-color: var(--secondary-color);
+}
+
+.MuiButton-root.MuiButton-contained:hover {
+  background-color: #95232a;
+}
+
+.MuiButton-root.MuiButton-outlined {
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.MuiButton-root.MuiButton-outlined:hover {
+  border: 1px solid #95232a;
+}

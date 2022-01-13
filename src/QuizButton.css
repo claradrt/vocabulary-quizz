@@ -1,10 +1,5 @@
 .get-quizzed-btn {
-  background-image: linear-gradient(
-    to right,
-    #c04848 0%,
-    #480048 51%,
-    #c04848 100%
-  );
+  background-image: var(--button-gradient);
   margin: 10px auto;
   padding: 15px 45px;
   text-align: center;
@@ -19,6 +14,6 @@
 }
 .get-quizzed-btn:hover {
   background-position: right center;
-  color: #fff;
+  color: var(--primary-font-color);
   text-decoration: none;
 }

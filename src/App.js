@@ -5,6 +5,8 @@ import VocabularyTest from "./routes/vocabulary-test";
 import Vocabulary from "./routes/vocabulary-list";
 import NavBar from "./NavBar.js";
 
+import "./Variables.css";
+
 export default function App() {
   return (
     <div className=" App">

@@ -12,7 +12,7 @@ export default function Word(props) {
   };
 
   return (
-    <div className="border word-wrapper">
+    <div className="word-wrapper">
       <div className="row justify-content-center">
         <div className="col-6">
           <div className="word text-capitalize">{props.word}</div>

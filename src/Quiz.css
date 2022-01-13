@@ -1,20 +1,22 @@
+.Quiz {
+  color: var(--primary-color);
+}
+
 .Quiz .close-quiz-btn {
   margin: 2px;
   border-radius: 4px;
-  border: 1px solid black;
+  border: 1px solid var(--secondary-color);
+  background-color: white;
+  color: var(--secondary-color);
+  transition: all 0.3s ease-in-out;
 }
 
 .Quiz .close-quiz-btn:hover {
-  opacity: 1;
+  background-color: var(--secondary-color);
+  color: var(--primary-font-color);
 }
 
 .Quiz .question-wrapper {
   width: fit-content;
   margin: 0 auto;
-}
-
-@media (max-width: 1000px) {
-  .Quiz .close-quiz-btn {
-    opacity: 1;
-  }
 }

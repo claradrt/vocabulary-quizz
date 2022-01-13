@@ -5,8 +5,7 @@ import ShowAnswer from "./ShowAnswer";
 import "./AnswerForm.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes, faEye } from "@fortawesome/free-solid-svg-icons";
 
 export default function AnswerForm(props) {
   const [showAnswer, setShowAnswer] = useState(false);
@@ -24,7 +23,7 @@ export default function AnswerForm(props) {
   const answerStatusRendering = {
     [statusMapping.noAnswer]: (
       <button className="submit-btn" type="submit">
-        Submit
+        <span>↲</span>
       </button>
     ),
     [statusMapping.correctAnswer]: (
@@ -34,7 +33,7 @@ export default function AnswerForm(props) {
     ),
     [statusMapping.incorrectAnswer]: (
       <span className="check-icon">
-        <FontAwesomeIcon icon={faTimes} color="red" />
+        <FontAwesomeIcon icon={faTimes} color="#ad2831" />
       </span>
     ),
   };
@@ -97,7 +96,7 @@ export default function AnswerForm(props) {
   return (
     <form className="AnswerForm" onSubmit={handleSubmit}>
       {showAnswer || (
-        <div>
+        <div className="align-items-center">
           <input
             className="answer-input"
             type="text"
@@ -108,7 +107,8 @@ export default function AnswerForm(props) {
           />
           {answerStatusRendering[answerStatus]}
           <div className="answer-reveal" onClick={displayAnswer}>
-            See answer
+            <FontAwesomeIcon icon={faEye} />{" "}
+            <p className="d-inline-block">See answer</p>
           </div>
         </div>
       )}

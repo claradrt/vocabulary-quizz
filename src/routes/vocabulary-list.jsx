@@ -112,16 +112,16 @@ export default function Vocabulary() {
 
   return (
     <div className="Vocabulary">
-      <p className="d-inline-block mx-auto mt-3">
-        You currently have {vocabularyList.length} words in your vocabulary
-        list.
+      <p className="total-of-words d-inline-block mx-auto mt-3">
+        You currently have <strong>{vocabularyList.length} words</strong> in
+        your vocabulary list.
       </p>
       {showAddWordForm && (
         <AddWord addNewWord={addNewWord} hideForm={hideAddWordForm} />
       )}
       {showAddWordForm || (
         <div
-          className="border text-center mt-3 add-word-wrapper"
+          className="text-center mt-3 add-word-wrapper"
           onClick={handleClick}
         >
           +Add new word

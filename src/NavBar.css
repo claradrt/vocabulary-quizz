@@ -1,9 +1,5 @@
 .NavBarItems {
-  background: linear-gradient(
-    90deg,
-    rgb(110, 94, 254) 0%,
-    rgba(73, 63, 252, 1) 100%
-  );
+  background: var(--navbar-gradient);
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -12,7 +8,7 @@
 }
 
 .navbar-logo {
-  color: white;
+  color: var(--primary-font-color);
   cursor: pointer;
   font-size: 1.6rem;
   margin-bottom: 0px;
@@ -32,21 +28,21 @@
 }
 
 .nav-links {
-  color: white;
+  color: var(--primary-font-color);
   text-decoration: none;
   padding: 0.5rem 1rem;
+  transition: all 0.2s ease-in-out;
 }
 
 .nav-links:hover {
-  background-color: #6d76f7;
+  background-color: var(--hover);
   border-radius: 4px;
-  transition: all 0.2s ease-out;
-  color: white;
+  color: var(--primary-font-color);
 }
 
 .menu-icon {
   display: none;
-  color: white;
+  color: var(--primary-font-color);
   font-size: 1.6rem;
   margin-right: 20px;
 }
@@ -64,7 +60,7 @@
   }
 
   .nav-menu.active {
-    background-color: #6668f4;
+    background-color: var(--secondary-color);
     left: 0;
     opacity: 1;
     transition: all 0.5s ease;
@@ -79,7 +75,6 @@
   }
 
   .nav-links:hover {
-    background-color: #7577fa;
     border-radius: 0px;
   }
 

@@ -2,11 +2,13 @@
 .add-word-wrapper {
   padding: 5px;
   margin: 5px auto;
+  border: 1px solid #dee2e6;
 }
 
 .add-word-wrapper:hover {
   cursor: pointer;
-  background-color: #f8f9fa;
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
 }
 
 .word {
@@ -15,7 +17,7 @@
 }
 
 .meaning {
-  color: #c04848;
+  color: var(--secondary-color);
 }
 
 .checkbox {

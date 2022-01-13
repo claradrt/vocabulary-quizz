@@ -1,25 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
 import ConfirmationModal from "./ConfirmationModal";
+import SimpleSnackbar from "./SnackBar";
 
 import Checkbox from "@mui/material/Checkbox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function VocabularyListOptions(props) {
-  const [openModal, setOpenModal] = React.useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   function onClick() {
     setOpenModal(true);
   }
 
-  function handleClose() {
+  function handleModalClose() {
     setOpenModal(false);
+  }
+
+  function handleSnackbarClose() {
+    setOpenSnackbar(false);
   }
 
   function handleDelete() {
     props.deleteSelection();
     setOpenModal(false);
+    setOpenSnackbar(true);
   }
 
   return (
@@ -48,13 +55,14 @@ export default function VocabularyListOptions(props) {
       </div>
       <ConfirmationModal
         open={openModal}
-        handleClose={handleClose}
+        handleClose={handleModalClose}
         confirmAction={handleDelete}
         dialogTitle="Are you sure you want to delete the selection?"
         dialogContentText="This action cannot be undone."
         confirmButtonIcon={<FontAwesomeIcon icon={faTrash} />}
         confirmButtonText="Delete"
       />
+      <SimpleSnackbar open={openSnackbar} handleClose={handleSnackbarClose} />
     </div>
   );
 }

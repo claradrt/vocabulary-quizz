@@ -12,13 +12,18 @@ export default function Footer() {
       <i>
         <FontAwesomeIcon icon={faGithub} />
       </i>
-      <a href="https://github.com/claradrt/vocabulary-quizz" target="_blank">
+      <a
+        href="https://github.com/claradrt/vocabulary-quizz"
+        target="_blank"
+        rel="noreferrer"
+      >
         Open source code
       </a>{" "}
       by{" "}
       <a
         href="https://vigilant-hypatia-9bacdb.netlify.app/index.html"
         target="_blank"
+        rel="noreferrer"
       >
         Clara Dérot
       </a>

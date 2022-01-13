@@ -6,17 +6,17 @@
   );
   height: 80px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 1.2rem;
 }
 
 .navbar-logo {
   color: white;
-  justify-self: start;
-  margin-left: 20px;
   cursor: pointer;
   font-size: 1.6rem;
+  margin-bottom: 0px;
+  margin-left: 20px;
 }
 
 .nav-menu {
@@ -47,13 +47,11 @@
 .menu-icon {
   display: none;
   color: white;
+  font-size: 1.6rem;
+  margin-right: 20px;
 }
 
 @media (max-width: 500px) {
-  .NavBarItems {
-    position: relative;
-  }
-
   .nav-menu {
     display: flex;
     flex-direction: column;
@@ -86,19 +84,12 @@
   }
 
   .navbar-logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(25%, 50%);
+    font-size: 1.8rem;
   }
 
   .menu-icon {
     display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
     cursor: pointer;
+    font-size: 1.8rem;
   }
 }

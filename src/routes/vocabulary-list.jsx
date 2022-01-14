@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Word from "../Word";
 import AddWord from "../AddWord";
 import VocabularyListOptions from "../VocabularyListOptions";
+import { nanoid } from "nanoid";
 
 import "../VocabularyList.css";
 
@@ -49,6 +50,8 @@ export default function Vocabulary() {
   }
 
   function addNewWord(word) {
+    word.id = nanoid();
+    console.log(word);
     vocabularyList.unshift(word);
     setVocabularyList([...vocabularyList]);
     localStorage.setItem(

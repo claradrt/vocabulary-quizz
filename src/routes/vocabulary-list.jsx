@@ -10,7 +10,7 @@ export default function Vocabulary() {
   const [vocabularyList, setVocabularyList] = useState(() => {
     return getListFromLocalStorage();
   });
-  const [selectedWordsIndex, setSelectedWordsIndex] = useState([]);
+  const [selectedWordsIds, setSelectedWordsIds] = useState([]);
   const [showDeleteOption, setShowDeleteOption] = useState(false);
   const [parentCheckboxState, setParentCheckboxState] = useState({
     checked: false,
@@ -32,18 +32,17 @@ export default function Vocabulary() {
   }
 
   function deleteSelection() {
-    let arrayOfIndex = selectedWordsIndex.sort(function (a, b) {
-      return b - a;
-    });
+    let arrayOfIds = [...selectedWordsIds];
     setTimeout(() => {
-      for (var wordIndex of arrayOfIndex) {
-        setVocabularyList([...vocabularyList]);
-        localStorage.setItem(
-          "storedVocabularyList",
-          JSON.stringify(vocabularyList)
-        );
+      for (var wordId of arrayOfIds) {
+        let vocabList = getListFromLocalStorage();
+        const isSameId = (word) => word.id === wordId;
+        let wordIndex = vocabList.findIndex(isSameId);
+        vocabList.splice(wordIndex, 1);
+        setVocabularyList(vocabList);
+        localStorage.setItem("storedVocabularyList", JSON.stringify(vocabList));
       }
-      setSelectedWordsIndex([]);
+      setSelectedWordsIds([]);
       setShowDeleteOption(false);
       updateParentCheckboxStatus(false, false);
     }, 500);
@@ -51,7 +50,6 @@ export default function Vocabulary() {
 
   function addNewWord(word) {
     word.id = nanoid();
-    console.log(word);
     vocabularyList.unshift(word);
     setVocabularyList([...vocabularyList]);
     localStorage.setItem(
@@ -64,24 +62,24 @@ export default function Vocabulary() {
     setShowAddWordForm(true);
   }
 
-  function wordIsSelected(wordIndex) {
-    let wordsIndex = [...selectedWordsIndex];
-    wordsIndex.push(wordIndex);
-    setSelectedWordsIndex(wordsIndex);
+  function wordIsSelected(wordId) {
+    let wordIds = [...selectedWordsIds];
+    wordIds.push(wordId);
+    setSelectedWordsIds(wordIds);
     setShowDeleteOption(true);
-    if (wordsIndex.length === vocabularyList.length) {
+    if (wordIds.length === vocabularyList.length) {
       updateParentCheckboxStatus(true, false);
     } else {
       updateParentCheckboxStatus(false, true);
     }
   }
 
-  function wordIsUnselected(wordIndex) {
-    let wordsIndex = [...selectedWordsIndex];
-    let index = wordsIndex.indexOf(wordIndex);
-    wordsIndex.splice(index, 1);
-    setSelectedWordsIndex(wordsIndex);
-    if (wordsIndex.length === 0) {
+  function wordIsUnselected(wordId) {
+    let wordIds = [...selectedWordsIds];
+    let index = wordIds.indexOf(wordId);
+    wordIds.splice(index, 1);
+    setSelectedWordsIds(wordIds);
+    if (wordIds.length === 0) {
       setShowDeleteOption(false);
       updateParentCheckboxStatus(false, false);
     } else {
@@ -101,15 +99,16 @@ export default function Vocabulary() {
   }
 
   function checkAllCheckboxes() {
+    let vocabList = getListFromLocalStorage();
     let array = [];
-    for (let i = 0; i < vocabularyList.length; i++) {
-      array.push(i);
+    for (let word of vocabList) {
+      array.push(word.id);
     }
-    setSelectedWordsIndex(array);
+    setSelectedWordsIds(array);
   }
 
   function uncheckAllCheckboxes() {
-    setSelectedWordsIndex([]);
+    setSelectedWordsIds([]);
   }
 
   function hideAddWordForm() {
@@ -142,11 +141,24 @@ export default function Vocabulary() {
     return list;
   }
 
+  function sortVocabularyListFromMostRecent() {
+    const vocabList = getListFromLocalStorage();
+    setVocabularyList(vocabList);
+    return vocabList;
+  }
+
+  function sortVocabularyListFromOldest() {
+    const vocabList = sortVocabularyListFromMostRecent().reverse();
+    setVocabularyList(vocabList);
+    return vocabList;
+  }
 
   function orderVocabularyList(selectedOption) {
     let functionMapping = {
       1: sortVocabularyListFromAToZ,
       2: sortVocabularyListFromZToA,
+      3: sortVocabularyListFromMostRecent,
+      4: sortVocabularyListFromOldest,
     };
     console.log(selectedOption);
     functionMapping[selectedOption]();
@@ -179,7 +191,7 @@ export default function Vocabulary() {
       {vocabularyList &&
         vocabularyList.map((wordObject, index) => {
           let checked;
-          if (selectedWordsIndex.includes(index)) {
+          if (selectedWordsIds.includes(wordObject.id)) {
             checked = true;
           } else {
             checked = false;
@@ -187,9 +199,7 @@ export default function Vocabulary() {
           return (
             <div key={index}>
               <Word
-                meaning={wordObject.meaning}
-                word={wordObject.word}
-                wordIndex={index}
+                wordObject={wordObject}
                 wordIsSelected={wordIsSelected}
                 wordIsUnselected={wordIsUnselected}
                 checked={checked}

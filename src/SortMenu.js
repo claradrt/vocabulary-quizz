@@ -7,6 +7,7 @@ const options = [
   { value: 1, label: "A-Z" },
   { value: 2, label: "Z-A" },
   { value: 3, label: "Most recent" },
+  { value: 4, label: "Oldest" },
 ];
 
 export default function SortMenu(props) {

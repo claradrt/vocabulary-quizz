@@ -7,9 +7,7 @@ import "../VocabularyList.css";
 
 export default function Vocabulary() {
   const [vocabularyList, setVocabularyList] = useState(() => {
-    const savedVocabularyList = localStorage.getItem("storedVocabularyList");
-    const initialValue = JSON.parse(savedVocabularyList);
-    return initialValue || [];
+    return getListFromLocalStorage();
   });
   const [selectedWordsIndex, setSelectedWordsIndex] = useState([]);
   const [showDeleteOption, setShowDeleteOption] = useState(false);
@@ -18,6 +16,12 @@ export default function Vocabulary() {
     indeterminate: false,
   });
   const [showAddWordForm, setShowAddWordForm] = useState(false);
+
+  function getListFromLocalStorage() {
+    const savedVocabularyList = localStorage.getItem("storedVocabularyList");
+    const initialValue = JSON.parse(savedVocabularyList);
+    return initialValue || [];
+  }
 
   function updateParentCheckboxStatus(checked, indeterminate) {
     const checkboxStatus = { ...parentCheckboxState };
@@ -32,7 +36,6 @@ export default function Vocabulary() {
     });
     setTimeout(() => {
       for (var wordIndex of arrayOfIndex) {
-        vocabularyList.splice(wordIndex, 1);
         setVocabularyList([...vocabularyList]);
         localStorage.setItem(
           "storedVocabularyList",
@@ -110,6 +113,42 @@ export default function Vocabulary() {
     setShowAddWordForm(false);
   }
 
+  function sortVocabularyListFromAToZ() {
+    let list = [...vocabularyList];
+    list.sort(function (a, b) {
+      var wordA = a.word.toUpperCase();
+      var wordB = b.word.toUpperCase();
+      wordA = wordA.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      wordB = wordB.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      if (wordA < wordB) {
+        return -1;
+      }
+      if (wordA > wordB) {
+        return 1;
+      }
+      return 0;
+    });
+    setVocabularyList(list);
+    return list;
+  }
+
+  function sortVocabularyListFromZToA() {
+    let list = sortVocabularyListFromAToZ();
+    list = list.reverse();
+    setVocabularyList(list);
+    return list;
+  }
+
+
+  function orderVocabularyList(selectedOption) {
+    let functionMapping = {
+      1: sortVocabularyListFromAToZ,
+      2: sortVocabularyListFromZToA,
+    };
+    console.log(selectedOption);
+    functionMapping[selectedOption]();
+  }
+
   return (
     <div className="Vocabulary">
       <p className="total-of-words d-inline-block mx-auto mt-3">
@@ -132,6 +171,7 @@ export default function Vocabulary() {
         parentCheckboxState={parentCheckboxState}
         handleChange={handleParentCheckboxChange}
         deleteSelection={deleteSelection}
+        orderVocabularyList={orderVocabularyList}
       />
       {vocabularyList &&
         vocabularyList.map((wordObject, index) => {

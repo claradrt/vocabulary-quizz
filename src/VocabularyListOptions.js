@@ -47,7 +47,7 @@ export default function VocabularyListOptions(props) {
               </button>
             </span>
           )}
-          <SortMenu />
+          <SortMenu orderVocabularyList={props.orderVocabularyList} />
           <Checkbox
             checked={props.parentCheckboxState.checked}
             indeterminate={props.parentCheckboxState.indeterminate}

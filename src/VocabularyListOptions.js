@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import ConfirmationModal from "./ConfirmationModal";
 import SimpleSnackbar from "./SnackBar";
+import SortMenu from "./SortMenu";
 
 import Checkbox from "@mui/material/Checkbox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -46,6 +47,7 @@ export default function VocabularyListOptions(props) {
               </button>
             </span>
           )}
+          <SortMenu />
           <Checkbox
             checked={props.parentCheckboxState.checked}
             indeterminate={props.parentCheckboxState.indeterminate}

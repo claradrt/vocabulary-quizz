@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import Quiz from "../Quiz.js";
 import QuizButton from "../QuizButton.js";
 import EndOfGameDialog from "../EndOfGameDialog.js";
+import NumberOfWordsModal from "../NumberOfWordsModal.js";
 
 export default function VocabularyTest() {
   const [showButton, setShowButton] = useState(true);
@@ -17,6 +18,7 @@ export default function VocabularyTest() {
     }
   });
   const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState(0);
+  const [openStartGameModal, setOpenStartGameModal] = useState(false);
 
   const [gameEnded, setGameEnded] = useState(false);
 
@@ -25,6 +27,7 @@ export default function VocabularyTest() {
   }
 
   function startGame() {
+    setOpenStartGameModal(true);
     setShowButton(false);
     setTotal(total);
   }
@@ -64,6 +67,15 @@ export default function VocabularyTest() {
             total={total}
             score={numberOfCorrectAnswers}
             addPointToScore={addPointToScore}
+          />
+        )}
+        {openStartGameModal && (
+          <NumberOfWordsModal
+            totalOfWords={total}
+            open={openStartGameModal}
+            handleClose={() => {
+              setOpenStartGameModal(false);
+            }}
           />
         )}
         {gameEnded && (

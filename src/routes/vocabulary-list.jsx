@@ -39,12 +39,18 @@ export default function Vocabulary() {
         const isSameId = (word) => word.id === wordId;
         let wordIndex = vocabList.findIndex(isSameId);
         vocabList.splice(wordIndex, 1);
-        setVocabularyList(vocabList);
-        localStorage.setItem("storedVocabularyList", JSON.stringify(vocabList));
       });
+      setVocabularyList(vocabList);
+      localStorage.setItem("storedVocabularyList", JSON.stringify(vocabList));
       setSelectedWordsIds([]);
       setShowDeleteOption(false);
       updateParentCheckboxStatus(false, false);
+      if (vocabList.length === 0) {
+        setSortingOrder(null);
+        orderVocabularyList(null);
+      } else {
+        orderVocabularyList(sortingOrder);
+      }
     }, 500);
   }
 
@@ -160,9 +166,10 @@ export default function Vocabulary() {
       3: sortVocabularyListFromMostRecent,
       4: sortVocabularyListFromOldest,
     };
-    console.log(selectedOption);
     setSortingOrder(selectedOption);
-    functionMapping[selectedOption]();
+    if (selectedOption !== null) {
+      functionMapping[selectedOption]();
+    }
   }
 
   return (

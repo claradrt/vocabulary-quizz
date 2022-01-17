@@ -24,16 +24,14 @@ export default function Quiz(props) {
   );
 
   function getRandomElementsFromArray(array, n) {
-    let copyOfArray = [...array];
-    console.log("Copy of Array:", copyOfArray);
+    let copyOfArray = array.slice(0);
     let newArray = [];
     for (var i = 0; i < n; i++) {
       let randomIndex = Math.floor(Math.random() * copyOfArray.length);
       let element = copyOfArray[randomIndex];
       newArray.push(element);
-      copyOfArray = copyOfArray.splice(randomIndex, 1);
+      copyOfArray.splice(randomIndex, 1);
     }
-    console.log("New array:", newArray);
     return newArray;
   }
 

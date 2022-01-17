@@ -10,14 +10,32 @@ export default function Quiz(props) {
   const [vocabularyList, setVocabularyList] = useState(() => {
     const savedVocabularyList = localStorage.getItem("storedVocabularyList");
     const initialValue = JSON.parse(savedVocabularyList);
-    return initialValue || [];
+    const questionsForQuiz = getRandomElementsFromArray(
+      initialValue,
+      props.numberOfQuestions
+    );
+    return questionsForQuiz || [];
   });
   const [question, setQuestion] = useState({});
   const [isInitialized, setIsInitialized] = useState(false);
   const [openConfirmationModal, setOpenConfirmationModal] = useState(false);
   const [totalOfRemainingQuestions, setTotalOfRemainingQuestions] = useState(
-    vocabularyList.length
+    props.numberOfQuestions
   );
+
+  function getRandomElementsFromArray(array, n) {
+    let copyOfArray = [...array];
+    console.log("Copy of Array:", copyOfArray);
+    let newArray = [];
+    for (var i = 0; i < n; i++) {
+      let randomIndex = Math.floor(Math.random() * copyOfArray.length);
+      let element = copyOfArray[randomIndex];
+      newArray.push(element);
+      copyOfArray = copyOfArray.splice(randomIndex, 1);
+    }
+    console.log("New array:", newArray);
+    return newArray;
+  }
 
   function randomAttribute() {
     const attributes = { 1: "word", 2: "meaning" };

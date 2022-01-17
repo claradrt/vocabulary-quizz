@@ -15,14 +15,18 @@ import { useTheme } from "@mui/material/styles";
 export default function NumberOfWordsModal(props) {
   const buildListOfOptions = () => {
     let array = [];
-    if (props.totalOfWords % 5 !== 0) {
-      array.push({
-        value: props.totalOfWords,
-        label: `${props.totalOfWords} (All)`,
-      });
-    }
-    for (var i = 0; i < props.totalOfWords; i += 5) {
-      array.push({ value: i, label: `${i}` });
+    array.push({
+      value: props.totalOfWords,
+      label: `${props.totalOfWords} (All)`,
+    });
+    if (props.totalOfWords <= 5) {
+      for (var i = 1; i < props.totalOfWords; i++) {
+        array.push({ value: i, label: `${i}` });
+      }
+    } else {
+      for (var j = 5; j < props.totalOfWords; j += 5) {
+        array.push({ value: j, label: `${j}` });
+      }
     }
     return array;
   };
@@ -54,6 +58,7 @@ export default function NumberOfWordsModal(props) {
             label="Age"
             onChange={(event) => {
               setSelectedOption(event.target.value);
+              props.setNumberOfQuestions(event.target.value);
               console.log("Selected:", event.target.value);
             }}
           >

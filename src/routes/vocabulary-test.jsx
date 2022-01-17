@@ -8,7 +8,7 @@ import NumberOfWordsModal from "../NumberOfWordsModal.js";
 
 export default function VocabularyTest() {
   const [showButton, setShowButton] = useState(true);
-  const [total, setTotal] = useState(() => {
+  const [total] = useState(() => {
     const savedVocabularyList = localStorage.getItem("storedVocabularyList");
     const initialList = JSON.parse(savedVocabularyList);
     if (initialList) {
@@ -19,6 +19,7 @@ export default function VocabularyTest() {
   });
   const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState(0);
   const [openStartGameModal, setOpenStartGameModal] = useState(false);
+  const [numberOfQuestions, setNumberOfQuestions] = useState(total);
 
   const [gameEnded, setGameEnded] = useState(false);
 
@@ -27,9 +28,8 @@ export default function VocabularyTest() {
   }
 
   function startGame() {
-    setOpenStartGameModal(true);
+    setOpenStartGameModal(false);
     setShowButton(false);
-    setTotal(total);
   }
 
   function gameIsFinished() {
@@ -59,23 +59,28 @@ export default function VocabularyTest() {
   } else {
     return (
       <div className="VocabularyTest text-center mt-5">
-        {showButton && <QuizButton startGame={startGame} />}
+        {showButton && (
+          <QuizButton setOpenStartGameModal={setOpenStartGameModal} />
+        )}
         {showButton || (
           <Quiz
             gameIsFinished={gameIsFinished}
             gameIsStopped={stopGame}
-            total={total}
-            score={numberOfCorrectAnswers}
             addPointToScore={addPointToScore}
+            total={numberOfQuestions}
+            score={numberOfCorrectAnswers}
+            numberOfQuestions={numberOfQuestions}
           />
         )}
         {openStartGameModal && (
           <NumberOfWordsModal
             totalOfWords={total}
+            setNumberOfQuestions={setNumberOfQuestions}
             open={openStartGameModal}
             handleClose={() => {
               setOpenStartGameModal(false);
             }}
+            confirmAction={startGame}
           />
         )}
         {gameEnded && (
@@ -86,7 +91,7 @@ export default function VocabularyTest() {
               setGameEnded(false);
               setNumberOfCorrectAnswers(0);
             }}
-            total={total}
+            total={numberOfQuestions}
             score={numberOfCorrectAnswers}
           />
         )}

@@ -8,7 +8,12 @@ export default function QuizButton(props) {
       <div className="instructions text-center mb-5">
         Click on the button below to get tested on your vocabulary list!
       </div>
-      <button className="get-quizzed-btn rounded" onClick={props.startGame}>
+      <button
+        className="get-quizzed-btn rounded"
+        onClick={() => {
+          props.setOpenStartGameModal(true);
+        }}
+      >
         START QUIZ
       </button>
     </div>

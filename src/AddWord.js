@@ -5,6 +5,8 @@ import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import "./AddWord.css";
 
+import { nanoid } from "nanoid";
+
 export default function AddWord(props) {
   const [newMeaning, setNewMeaning] = useState("");
   const [newWord, setNewWord] = useState("");
@@ -24,6 +26,7 @@ export default function AddWord(props) {
       props.addNewWord({
         meaning: newMeaning,
         word: newWord,
+        id: nanoid(),
       });
       setNewMeaning("");
       setNewWord("");

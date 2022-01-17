@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Word from "../Word";
 import AddWord from "../AddWord";
 import VocabularyListOptions from "../VocabularyListOptions";
-import { nanoid } from "nanoid";
 
 import "../VocabularyList.css";
 
@@ -17,6 +16,7 @@ export default function Vocabulary() {
     indeterminate: false,
   });
   const [showAddWordForm, setShowAddWordForm] = useState(false);
+  const [sortingOrder, setSortingOrder] = useState(null);
 
   function getListFromLocalStorage() {
     const savedVocabularyList = localStorage.getItem("storedVocabularyList");
@@ -33,15 +33,15 @@ export default function Vocabulary() {
 
   function deleteSelection() {
     let arrayOfIds = [...selectedWordsIds];
+    let vocabList = getListFromLocalStorage();
     setTimeout(() => {
-      for (var wordId of arrayOfIds) {
-        let vocabList = getListFromLocalStorage();
+      arrayOfIds.forEach((wordId) => {
         const isSameId = (word) => word.id === wordId;
         let wordIndex = vocabList.findIndex(isSameId);
         vocabList.splice(wordIndex, 1);
         setVocabularyList(vocabList);
         localStorage.setItem("storedVocabularyList", JSON.stringify(vocabList));
-      }
+      });
       setSelectedWordsIds([]);
       setShowDeleteOption(false);
       updateParentCheckboxStatus(false, false);
@@ -49,13 +49,13 @@ export default function Vocabulary() {
   }
 
   function addNewWord(word) {
-    word.id = nanoid();
     vocabularyList.unshift(word);
     setVocabularyList([...vocabularyList]);
     localStorage.setItem(
       "storedVocabularyList",
       JSON.stringify(vocabularyList)
     );
+    orderVocabularyList(sortingOrder);
   }
 
   function handleClick() {
@@ -161,6 +161,7 @@ export default function Vocabulary() {
       4: sortVocabularyListFromOldest,
     };
     console.log(selectedOption);
+    setSortingOrder(selectedOption);
     functionMapping[selectedOption]();
   }
 
@@ -181,13 +182,15 @@ export default function Vocabulary() {
           +Add new word
         </div>
       )}
-      <VocabularyListOptions
-        showDeleteOption={showDeleteOption}
-        parentCheckboxState={parentCheckboxState}
-        handleChange={handleParentCheckboxChange}
-        deleteSelection={deleteSelection}
-        orderVocabularyList={orderVocabularyList}
-      />
+      {vocabularyList.length !== 0 && (
+        <VocabularyListOptions
+          showDeleteOption={showDeleteOption}
+          parentCheckboxState={parentCheckboxState}
+          handleChange={handleParentCheckboxChange}
+          deleteSelection={deleteSelection}
+          orderVocabularyList={orderVocabularyList}
+        />
+      )}
       {vocabularyList &&
         vocabularyList.map((wordObject, index) => {
           let checked;

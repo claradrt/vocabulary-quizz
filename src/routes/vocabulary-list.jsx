@@ -159,12 +159,29 @@ export default function Vocabulary() {
     return vocabList;
   }
 
+  function sortVocabularyListFromHighestScore() {
+    let list = [...vocabularyList];
+    list.sort(function (a, b) {
+      return b.correctAnwserCount - a.correctAnwserCount;
+    });
+    setVocabularyList(list);
+    return list;
+  }
+
+  function sortVocabularyListFromLowestScore() {
+    const list = sortVocabularyListFromHighestScore().reverse();
+    setVocabularyList(list);
+    return list;
+  }
+
   function orderVocabularyList(selectedOption) {
     let functionMapping = {
-      1: sortVocabularyListFromAToZ,
-      2: sortVocabularyListFromZToA,
-      3: sortVocabularyListFromMostRecent,
-      4: sortVocabularyListFromOldest,
+      1: sortVocabularyListFromMostRecent,
+      2: sortVocabularyListFromOldest,
+      3: sortVocabularyListFromAToZ,
+      4: sortVocabularyListFromZToA,
+      5: sortVocabularyListFromHighestScore,
+      6: sortVocabularyListFromLowestScore,
     };
     setSortingOrder(selectedOption);
     if (selectedOption !== null) {

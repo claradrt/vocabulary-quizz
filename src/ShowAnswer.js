@@ -11,7 +11,7 @@ export default function ShowAnswer(props) {
   }
   return (
     <div className="ShowAnswer">
-      <span className="answer">{props.answer}</span>
+      <span className="answer text-break">{props.answer}</span>
       <div className="next-word-btn" onClick={handleClick}>
         <span className="next">{props.btnContent}</span>
         <span className="icon">

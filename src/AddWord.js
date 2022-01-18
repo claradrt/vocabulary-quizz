@@ -27,6 +27,7 @@ export default function AddWord(props) {
         meaning: newMeaning,
         word: newWord,
         id: nanoid(),
+        correctAnwserCount: 0,
       });
       setNewMeaning("");
       setNewWord("");

@@ -12,7 +12,7 @@ import Select from "@mui/material/Select";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 
-export default function NumberOfWordsModal(props) {
+export default function StartTestModal(props) {
   const buildListOfOptions = () => {
     let array = [];
     array.push({

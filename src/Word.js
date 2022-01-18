@@ -14,13 +14,19 @@ export default function Word(props) {
   return (
     <div className="word-wrapper">
       <div className="row justify-content-center">
-        <div className="col-6">
+        <div className="col-5 text-break">
           <div className="word text-capitalize">{props.wordObject.word}</div>
           <div className="meaning text-capitalize">
             {props.wordObject.meaning}
           </div>
         </div>
-        <div className="checkbox-wrapper col-6 align-self-center pe-3">
+        <div className="col-6 text-center align-self-center">
+          <span className="answer-count">
+            {" "}
+            Correct answer count: {props.wordObject.correctAnwserCount}
+          </span>
+        </div>
+        <div className="checkbox-wrapper col-1 align-self-center pe-3">
           <label className="checkbox">
             <Checkbox checked={props.checked} onChange={handleChange} />
           </label>

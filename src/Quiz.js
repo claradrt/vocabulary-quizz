@@ -7,14 +7,18 @@ import ConfirmationModal from "./ConfirmationModal.js";
 import "./Quiz.css";
 
 export default function Quiz(props) {
-  const [vocabularyList, setVocabularyList] = useState(() => {
+  function getVocabularyListFromLocalStorage() {
     const savedVocabularyList = localStorage.getItem("storedVocabularyList");
     const initialValue = JSON.parse(savedVocabularyList);
-    const questionsForQuiz = getRandomElementsFromArray(
-      initialValue,
+    return initialValue || [];
+  }
+
+  const [vocabularyList, setVocabularyList] = useState(() => {
+    const wordsForQuiz = getRandomElementsFromArray(
+      getVocabularyListFromLocalStorage(),
       props.numberOfQuestions
     );
-    return questionsForQuiz || [];
+    return wordsForQuiz || [];
   });
   const [question, setQuestion] = useState({});
   const [isInitialized, setIsInitialized] = useState(false);
@@ -22,6 +26,14 @@ export default function Quiz(props) {
   const [totalOfRemainingQuestions, setTotalOfRemainingQuestions] = useState(
     props.numberOfQuestions
   );
+  const [idsOfWordsGuessed, setIdsOfWordsGuessed] = useState([]);
+
+  function wordIsGuessed(id) {
+    let array = [...idsOfWordsGuessed];
+    array.push(id);
+    setIdsOfWordsGuessed(array);
+    console.log(array);
+  }
 
   function getRandomElementsFromArray(array, n) {
     let copyOfArray = array.slice(0);
@@ -41,11 +53,12 @@ export default function Quiz(props) {
     return randomAttribute;
   }
 
-  function buildQuestion(word, meaning, answer) {
+  function buildQuestion(word, meaning, answer, id) {
     let questionObject = {
       wordToTranslate: word,
       meaningToTranslate: meaning,
       answer: answer,
+      wordId: id,
     };
     return questionObject;
   }
@@ -59,15 +72,18 @@ export default function Quiz(props) {
         questionObject = buildQuestion(
           vocabularyList[randomTermIndex].word,
           "",
-          vocabularyList[randomTermIndex].meaning
+          vocabularyList[randomTermIndex].meaning,
+          vocabularyList[randomTermIndex].id
         );
       } else {
         questionObject = buildQuestion(
           "",
           vocabularyList[randomTermIndex].meaning,
-          vocabularyList[randomTermIndex].word
+          vocabularyList[randomTermIndex].word,
+          vocabularyList[randomTermIndex].id
         );
       }
+      console.log(questionObject);
       setQuestion(questionObject);
       vocabularyList.splice(randomTermIndex, 1);
       setVocabularyList(vocabularyList);
@@ -75,8 +91,18 @@ export default function Quiz(props) {
     } else {
       props.gameIsFinished();
       setTotalOfRemainingQuestions(-1);
+      let array = getVocabularyListFromLocalStorage();
+      idsOfWordsGuessed.forEach((id) => {
+        const indexOfCorrespondingWord = array.findIndex(
+          (word) => word.id === id
+        );
+        array[indexOfCorrespondingWord].correctAnwserCount++;
+      });
+
+      localStorage.setItem("storedVocabularyList", JSON.stringify(array));
+      setIdsOfWordsGuessed([]);
     }
-  }, [props, vocabularyList]);
+  }, [props, vocabularyList, idsOfWordsGuessed]);
 
   useEffect(() => {
     if (isInitialized) {
@@ -103,12 +129,11 @@ export default function Quiz(props) {
       />
 
       <Question
-        word={question.wordToTranslate}
-        meaning={question.meaningToTranslate}
-        answer={question.answer}
+        questionObject={question}
+        remaining={totalOfRemainingQuestions}
         newWordToTranslate={newWordToTranslate}
         addPointToScore={props.addPointToScore}
-        remaining={totalOfRemainingQuestions}
+        wordIsGuessed={wordIsGuessed}
       />
       <button
         className="close-quiz-btn mt-5"

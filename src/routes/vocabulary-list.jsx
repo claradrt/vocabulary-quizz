@@ -210,9 +210,9 @@ export default function Vocabulary() {
             <div key={index}>
               <Word
                 wordObject={wordObject}
+                checked={checked}
                 wordIsSelected={wordIsSelected}
                 wordIsUnselected={wordIsUnselected}
-                checked={checked}
               />
             </div>
           );

@@ -61,7 +61,7 @@ export default function AnswerForm(props) {
     setDisabled(true);
     let input = event.target[0].value;
     input = input.toLowerCase();
-    if (input === props.answer.toLowerCase()) {
+    if (input === props.question.answer.toLowerCase()) {
       handleCorrectAnswer(event);
     } else {
       handleIncorrectAnswer();
@@ -71,6 +71,7 @@ export default function AnswerForm(props) {
   function handleCorrectAnswer(event) {
     setAnswerStatus(statusMapping.correctAnswer);
     props.addPointToScore();
+    props.wordIsGuessed(props.question.wordId);
     setTimeout(() => {
       setAnswerStatus(statusMapping.noAnswer);
       setDisabled(false);
@@ -114,7 +115,7 @@ export default function AnswerForm(props) {
       )}
       {showAnswer && (
         <ShowAnswer
-          answer={props.answer}
+          answer={props.question.answer}
           nextWord={nextWord}
           btnContent={btnContent()}
         />

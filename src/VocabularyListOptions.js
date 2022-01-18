@@ -33,8 +33,8 @@ export default function VocabularyListOptions(props) {
   return (
     <div className="icon-wrapper">
       <div className="row justify-content-center">
-        <div className="col-6"></div>
-        <div className="col-6 pe-3">
+        <div className="col-2"></div>
+        <div className="col-10 pe-3">
           {props.showDeleteOption && (
             <span className="delete-wrapper">
               <button

@@ -23,15 +23,16 @@ export default function SortMenu(props) {
       },
     };
   }
+
   return (
-    <div className="dropdown d-inline-block">
+    <div className="SortMenu text-start d-inline-block">
       <Select
+        theme={customTheme}
         options={options}
         onChange={(event) => {
           props.orderVocabularyList(event.value);
         }}
         placeholder="Sort by"
-        theme={customTheme}
       />
     </div>
   );

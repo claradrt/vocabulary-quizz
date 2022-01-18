@@ -29,10 +29,7 @@ export default function Quiz(props) {
   const [idsOfWordsGuessed, setIdsOfWordsGuessed] = useState([]);
 
   function wordIsGuessed(id) {
-    let array = [...idsOfWordsGuessed];
-    array.push(id);
-    setIdsOfWordsGuessed(array);
-    console.log(array);
+    idsOfWordsGuessed.push(id);
   }
 
   function getRandomElementsFromArray(array, n) {
@@ -83,7 +80,6 @@ export default function Quiz(props) {
           vocabularyList[randomTermIndex].id
         );
       }
-      console.log(questionObject);
       setQuestion(questionObject);
       vocabularyList.splice(randomTermIndex, 1);
       setVocabularyList(vocabularyList);
@@ -98,7 +94,6 @@ export default function Quiz(props) {
         );
         array[indexOfCorrespondingWord].correctAnwserCount++;
       });
-
       localStorage.setItem("storedVocabularyList", JSON.stringify(array));
       setIdsOfWordsGuessed([]);
     }
@@ -127,7 +122,6 @@ export default function Quiz(props) {
         score={props.score}
         remaining={totalOfRemainingQuestions}
       />
-
       <Question
         questionObject={question}
         remaining={totalOfRemainingQuestions}

@@ -67,7 +67,6 @@ export default function VocabularyTest() {
             gameIsFinished={gameIsFinished}
             gameIsStopped={stopGame}
             addPointToScore={addPointToScore}
-            total={numberOfQuestions}
             score={numberOfCorrectAnswers}
             numberOfQuestions={numberOfQuestions}
           />

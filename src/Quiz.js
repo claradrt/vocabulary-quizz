@@ -20,6 +20,7 @@ export default function Quiz(props) {
     );
     return wordsForQuiz || [];
   });
+
   const [question, setQuestion] = useState({});
   const [isInitialized, setIsInitialized] = useState(false);
   const [openConfirmationModal, setOpenConfirmationModal] = useState(false);
@@ -118,7 +119,7 @@ export default function Quiz(props) {
   return (
     <div className="Quiz">
       <Score
-        total={props.total}
+        total={props.numberOfQuestions}
         score={props.score}
         remaining={totalOfRemainingQuestions}
       />

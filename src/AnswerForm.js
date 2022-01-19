@@ -70,13 +70,13 @@ export default function AnswerForm(props) {
 
   function handleCorrectAnswer(event) {
     setAnswerStatus(statusMapping.correctAnswer);
-    props.addPointToScore();
     props.wordIsGuessed(props.question.wordId);
     setTimeout(() => {
       setAnswerStatus(statusMapping.noAnswer);
       setDisabled(false);
       props.newWordToTranslate();
       event.target[0].value = "";
+      props.addPointToScore();
     }, 1000);
   }
 

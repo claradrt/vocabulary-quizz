@@ -1,14 +1,15 @@
 .NavBarItems {
-  background: var(--navbar-gradient);
+  background: var(--secondary-color);
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1.2rem;
+  box-shadow: 0px 6px 10px -1px rgba(79, 79, 79, 0.11);
 }
 
 .navbar-logo {
-  color: var(--primary-font-color);
+  color: var(--primary-color);
   cursor: pointer;
   font-size: 1.6rem;
   margin-bottom: 0px;
@@ -31,18 +32,18 @@
   color: var(--primary-font-color);
   text-decoration: none;
   padding: 0.5rem 1rem;
+  border-radius: 20px;
   transition: all 0.2s ease-in-out;
 }
 
 .nav-links:hover {
-  background-color: var(--hover);
-  border-radius: 4px;
+  background-color: var(--tertiary-color);
   color: var(--primary-font-color);
 }
 
 .menu-icon {
   display: none;
-  color: var(--primary-font-color);
+  color: var(--primary-color);
   font-size: 1.6rem;
   margin-right: 20px;
 }
@@ -60,7 +61,7 @@
   }
 
   .nav-menu.active {
-    background-color: var(--secondary-color);
+    background-color: var(--quaternary-color);
     left: 0;
     opacity: 1;
     transition: all 0.5s ease;

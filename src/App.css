@@ -1,6 +1,7 @@
 .App {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Assistant", sans-serif;
   font-size: 18px;
+  font-weight: 200;
 }
 
 .active {

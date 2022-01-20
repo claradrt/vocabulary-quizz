@@ -5,19 +5,28 @@
   border: 1px solid #dee2e6;
 }
 
+.word-wrapper {
+  background-color: var(--quaternary-color);
+}
+
+.add-word-wrapper {
+  color: var(--primary-font-color);
+  background-color: var(--secondary-color);
+}
+
 .add-word-wrapper:hover {
   cursor: pointer;
-  color: var(--secondary-color);
-  border: 1px solid var(--secondary-color);
+  background-color: var(--quaternary-color);
 }
 
 .word {
-  font-weight: bold;
+  font-weight: 400;
   font-size: 18px;
 }
 
 .meaning {
-  color: var(--secondary-color);
+  color: var(--primary-color);
+  font-weight: 300;
 }
 
 .checkbox {
@@ -32,10 +41,18 @@
   color: white;
 }
 
+.MuiCheckbox-root .MuiSvgIcon-root {
+  color: var(--primary-color);
+}
+
+.answer-count strong {
+  font-weight: 300;
+  color: var(--primary-color);
+}
+
 @media (max-width: 600px) {
-  .checkbox-wrapper {
-    visibility: visible;
-    font-size: 15px;
+  .MuiCheckbox-root .MuiSvgIcon-root {
+    font-size: 20px;
   }
 
   .answer-count {

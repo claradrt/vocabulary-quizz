@@ -1,19 +1,26 @@
 .get-quizzed-btn {
-  background-image: var(--button-gradient);
+  background: var(--primary-color);
   margin: 10px auto;
   padding: 15px 45px;
   text-align: center;
   transition: 0.5s;
   background-size: 200% auto;
-  color: white;
+  color: var(--secondary-color);
   box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
+  border-radius: 20px;
+  border: 1px solid var(--primary-color);
   display: block;
   font-size: 20px;
-  border: 1px solid black;
+  font-weight: 500;
 }
+
 .get-quizzed-btn:hover {
-  background-position: right center;
-  color: var(--primary-font-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   text-decoration: none;
+  border: 1px solid var(--primary-color);
+}
+
+.instructions {
+  color: var(--primary-font-color);
 }

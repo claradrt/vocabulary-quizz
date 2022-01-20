@@ -3,8 +3,11 @@
 }
 
 .AddWord input {
+  width: 100%;
   border: 1px solid #757575;
   border-radius: 4px;
+  font-weight: 300;
+  color: var(--primary-font-color);
 }
 
 .AddWord .word-input {
@@ -16,7 +19,7 @@
 }
 
 .AddWord input:focus-visible {
-  outline-color: rgb(229, 151, 0);
+  outline-color: var(--primary-color);
 }
 
 .AddWord .btn-wrapper {
@@ -52,10 +55,6 @@
 
 .AddWord .btn-wrapper .cancel-btn:hover {
   opacity: 1;
-}
-
-.AddWord input {
-  width: 100%;
 }
 
 @media (max-width: 770px) {

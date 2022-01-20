@@ -18,8 +18,8 @@ export default function SortMenu(props) {
       ...theme,
       colors: {
         ...theme.colors,
-        primary25: "#c62f39",
-        primary: "#c62f39",
+        primary25: "#fef8f7",
+        primary: "#ee7769",
       },
     };
   }

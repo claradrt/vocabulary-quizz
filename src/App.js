@@ -1,4 +1,3 @@
-import "./App.css";
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import VocabularyTest from "./routes/vocabulary-test";
@@ -7,10 +6,11 @@ import NavBar from "./NavBar.js";
 import Footer from "./Footer";
 
 import "./Variables.css";
+import "./App.css";
 
 export default function App() {
   return (
-    <div className=" App">
+    <div className="App">
       <HashRouter>
         <NavBar />
         <div className="container">

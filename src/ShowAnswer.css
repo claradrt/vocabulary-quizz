@@ -11,14 +11,15 @@
   padding: 2px;
   position: relative;
   border: 1px solid var(--primary-color);
-  background-color: white;
+  background-color: transparent;
   color: var(--primary-color);
   transition: all 0.3s ease-in-out;
+  font-weight: 400;
 }
 
 .ShowAnswer .next-word-btn:hover {
-  background-color: var(--secondary-color);
-  color: var(--primary-font-color);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 .ShowAnswer .icon {

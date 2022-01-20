@@ -23,7 +23,8 @@ export default function Word(props) {
         <div className="col-6 text-center align-self-center">
           <span className="answer-count">
             {" "}
-            Correct answer count: {props.wordObject.correctAnwserCount}
+            Correct answer count:{" "}
+            <strong>{props.wordObject.correctAnwserCount}</strong>
           </span>
         </div>
         <div className="checkbox-wrapper col-1 align-self-center pe-3">

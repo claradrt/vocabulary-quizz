@@ -191,6 +191,7 @@ export default function Vocabulary() {
 
   return (
     <div className="Vocabulary">
+      <h2 className="mt-2 text-center">Vocabulary List</h2>
       <p className="total-of-words d-inline-block mx-auto mt-3">
         You currently have <strong>{vocabularyList.length} words</strong> in
         your vocabulary list.

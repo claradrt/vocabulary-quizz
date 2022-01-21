@@ -12,7 +12,7 @@ export default function ShowAnswer(props) {
   return (
     <div className="ShowAnswer">
       <span className="answer text-break">{props.answer}</span>
-      <div className="next-word-btn" onClick={handleClick}>
+      <div className="btn-style next-word-btn" onClick={handleClick}>
         <span className="next">{props.btnContent}</span>
         <span className="icon">
           <FontAwesomeIcon icon={faArrowRight} />

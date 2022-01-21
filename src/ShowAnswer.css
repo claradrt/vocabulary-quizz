@@ -5,21 +5,10 @@
 }
 
 .ShowAnswer .next-word-btn {
-  border-radius: 4px;
   margin-top: 10px;
-  cursor: pointer;
   padding: 2px;
   position: relative;
-  border: 1px solid var(--primary-color);
-  background-color: transparent;
-  color: var(--primary-color);
-  transition: all 0.3s ease-in-out;
   font-weight: 400;
-}
-
-.ShowAnswer .next-word-btn:hover {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
 }
 
 .ShowAnswer .icon {

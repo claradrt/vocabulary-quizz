@@ -131,7 +131,7 @@ export default function Quiz(props) {
         wordIsGuessed={wordIsGuessed}
       />
       <button
-        className="close-quiz-btn mt-5"
+        className="btn-style close-quiz-btn mt-5"
         title="Stop quiz"
         onClick={onClick}
       >

@@ -9,7 +9,7 @@ export default function QuizButton(props) {
         Click on the button below to get tested on your vocabulary list!
       </div>
       <button
-        className="get-quizzed-btn"
+        className="btn-style-reverse get-quizzed-btn"
         onClick={() => {
           props.setOpenStartGameModal(true);
         }}

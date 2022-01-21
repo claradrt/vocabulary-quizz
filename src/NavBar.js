@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "./NavBar.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faReact } from "@fortawesome/free-brands-svg-icons";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default function NavBar() {
@@ -22,7 +21,7 @@ export default function NavBar() {
   return (
     <nav className="NavBarItems">
       <h1 className="navbar-logo">
-        <FontAwesomeIcon icon={faReact} />
+        <img src="/images/logo.png" alt="" className="logo" />
       </h1>
       <div className="menu-icon" onClick={handleClick}>
         <FontAwesomeIcon icon={clicked ? faTimes : faBars} />

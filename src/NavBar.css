@@ -16,6 +16,10 @@
   margin-left: 20px;
 }
 
+.logo {
+  max-width: 40px;
+}
+
 .nav-menu {
   display: grid;
   grid-template-columns: repeat(2, auto);

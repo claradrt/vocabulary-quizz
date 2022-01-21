@@ -196,17 +196,19 @@ export default function Vocabulary() {
         You currently have <strong>{vocabularyList.length} words</strong> in
         your vocabulary list.
       </p>
-      {showAddWordForm && (
-        <AddWord addNewWord={addNewWord} hideForm={hideAddWordForm} />
-      )}
-      {showAddWordForm || (
-        <div
-          className="text-center mt-3 add-word-wrapper"
-          onClick={handleClick}
-        >
-          +Add new word
-        </div>
-      )}
+      <div id="add-word-form">
+        {showAddWordForm && (
+          <AddWord addNewWord={addNewWord} hideForm={hideAddWordForm} />
+        )}
+        {showAddWordForm || (
+          <div
+            className="text-center mt-3 add-word-wrapper"
+            onClick={handleClick}
+          >
+            +Add new word
+          </div>
+        )}
+      </div>
       {vocabularyList.length !== 0 && (
         <VocabularyListOptions
           showDeleteOption={showDeleteOption}

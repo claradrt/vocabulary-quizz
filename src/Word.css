@@ -50,12 +50,44 @@
   color: var(--primary-color);
 }
 
+.tooltips {
+  display: inline-block;
+  padding-left: 10px;
+}
+
+.tooltips .question-icon {
+  color: var(--primary-font-color);
+  font-size: 15px;
+}
+
+.tooltips .tooltiptext {
+  font-size: 14px;
+  visibility: hidden;
+  max-width: 120px;
+  background-color: var(--primary-font-color);
+  color: var(--tertiary-color);
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltips:hover .tooltiptext {
+  visibility: visible;
+}
+
 @media (max-width: 600px) {
   .MuiCheckbox-root .MuiSvgIcon-root {
     font-size: 20px;
   }
 
-  .answer-count {
-    font-size: 14px;
+  .answer-count .answer-count-text {
+    display: none;
+  }
+
+  .tooltips .tooltiptext {
+    padding: 2px;
   }
 }

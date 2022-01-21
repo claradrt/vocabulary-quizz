@@ -1,6 +1,8 @@
 import React from "react";
 import "./Word.css";
 import Checkbox from "@mui/material/Checkbox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestionCircle } from "@fortawesome/free-regular-svg-icons";
 
 export default function Word(props) {
   const handleChange = (event) => {
@@ -23,8 +25,17 @@ export default function Word(props) {
         <div className="col-6 text-center align-self-center">
           <span className="answer-count">
             {" "}
-            Correct answer count:{" "}
+            <span className="answer-count-text">Correct answer count: </span>
             <strong>{props.wordObject.correctAnwserCount}</strong>
+            <div className="tooltips">
+              <span className="question-icon">
+                <FontAwesomeIcon icon={faQuestionCircle} />
+              </span>
+              <span className="tooltiptext">
+                This is the number of times you guessed that word right in the
+                quiz
+              </span>
+            </div>
           </span>
         </div>
         <div className="checkbox-wrapper col-1 align-self-center pe-3">

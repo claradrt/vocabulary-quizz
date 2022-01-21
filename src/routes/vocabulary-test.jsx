@@ -53,7 +53,9 @@ export default function VocabularyTest() {
           come back to this section to get tested on your knowledge!
         </div>
 
-        <NavLink to="/vocabulary">Add words to my vocabulary list</NavLink>
+        <NavLink to="/vocabulary" className="btn-style-reverse initial-btn">
+          Add words to my vocabulary list
+        </NavLink>
       </div>
     );
   } else {

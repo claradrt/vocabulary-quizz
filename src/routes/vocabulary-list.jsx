@@ -40,7 +40,6 @@ export default function Vocabulary() {
         let wordIndex = vocabList.findIndex(isSameId);
         vocabList.splice(wordIndex, 1);
       });
-      setVocabularyList(vocabList);
       localStorage.setItem("storedVocabularyList", JSON.stringify(vocabList));
       setSelectedWordsIds([]);
       setShowDeleteOption(false);
@@ -122,7 +121,7 @@ export default function Vocabulary() {
   }
 
   function sortVocabularyListFromAToZ() {
-    let list = [...vocabularyList];
+    let list = getListFromLocalStorage();
     list.sort(function (a, b) {
       var wordA = a.word.toUpperCase();
       var wordB = b.word.toUpperCase();
@@ -160,7 +159,7 @@ export default function Vocabulary() {
   }
 
   function sortVocabularyListFromHighestScore() {
-    let list = [...vocabularyList];
+    let list = getListFromLocalStorage();
     list.sort(function (a, b) {
       return b.correctAnwserCount - a.correctAnwserCount;
     });
